@@ -1,0 +1,28 @@
+{
+  "name": "kart-and-info",
+  "version": "1.0.0",
+  "description": "This is a test to see if I can merge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fec-team-2/kart-and-info.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fec-team-2/kart-and-info/issues"
+  },
+  "homepage": "https://github.com/fec-team-2/kart-and-info#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
