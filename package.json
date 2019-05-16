@@ -23,6 +23,8 @@
     "babel-loader": "^8.0.6"
   },
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.18.0",
+    "faker": "^4.1.0",
+    "moment": "^2.24.0"
   }
 }
