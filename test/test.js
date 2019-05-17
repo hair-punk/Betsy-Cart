@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const seeds = require("../controllers/seeder.js");
+const seeds = require("../dbHelpers/seeder.js.js");
 
 
 describe("- - - - - - - - -SEEDS - - - - - - -", function() { // this is not touching mongo at all. Simply testing my controller seeder.js 

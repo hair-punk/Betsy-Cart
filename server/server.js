@@ -1,5 +1,7 @@
-const seeds = require("../controllers/seeder.js");
+const db = dbhelper.js;
+const express = require('express');
+const bodyParser = require('body-parser');
 
 var data = seeds;
 
-console.log(data.slice(0,2))
+console.log(data.slice(0,2));

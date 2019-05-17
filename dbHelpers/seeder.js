@@ -1,6 +1,7 @@
 "use-strict" 
-const faker = require('faker')
-const moment = require('Moment')
+const faker = require('faker');
+const moment = require('Moment');
+// const db = require('/dbhelper.js'); //renamed and repurposed this file
 
 
 
@@ -11,9 +12,8 @@ var seedMaker = function(){
   var rando100 = Math.floor(Math.random()* 100)
   var rando7 = Math.floor(Math.random()*7)
   var rando3 = Math.floor(Math.random()*3)
-  var randoStars =  Math.floor(Math.random()*10)/2
+  var randoStars =  Math.floor(Math.random()*10)/2;
   var even = (rando7 %2 === 0)
-
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - - - Product choices (colors or sizes)
   var buyOptions = {
     size: ["xSmall", "Small", "Medium", "Large", "xLarge"],
@@ -26,8 +26,7 @@ var seedMaker = function(){
     }
     n --
   }
-
-//- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - realistic shipping price gen 
+//- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - realistic shipping price gen i need to learn regex
 var price = faker.commerce.price(1,12)
 price = "$"+ price.slice(0,2) 
 if(price.indexOf(".") === -1){
@@ -37,7 +36,6 @@ if(price.indexOf(".") === -1){
 if(rando100 < 10) {
   price=price+"0"
 }
-
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together 
 var output = {
    storeName: (faker.company.bsAdjective()+ " " + faker.commerce.productAdjective() +  " " + faker.random.word()),
@@ -67,9 +65,14 @@ var seeds = []
 
 
 
+console.log(db)
 
 
   module.exports = seeds;
+
+
+
+
 
 
 
