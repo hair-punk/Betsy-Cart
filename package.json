@@ -4,7 +4,7 @@
   "description": "This is a test to see if I can merge",
   "main": "server/server.js",
   "scripts": {
-    "test": "mocha test/test.js  -R nyan -watch",
+    "test": "mocha test/test.js",
     "start": "nodemon server/server.js"
   },
   "repository": {
