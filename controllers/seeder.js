@@ -1,7 +1,5 @@
 "use-strict" 
 const faker = require('faker')
-const axios = require("Axios")
-const keys = require("../config/keys.js")
 const moment = require('Moment')
 
 
@@ -82,6 +80,8 @@ var seeds = []
 
 // IF YOU WANTED TO DO THIS VIA ETSY API, I'VE Done the ground work for your below....
 
+// const axios = require("Axios")
+// const keys = require("../config/keys.js")
   // axios.get(`https://openapi.etsy.com/v2/listings/active?api_key=${keys.etsy}`)
   // .then(response => {
   //   var results = response.data.results
