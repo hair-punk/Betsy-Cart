@@ -2,7 +2,7 @@
 const faker = require('faker');
 const moment = require('Moment');
 // const db = require('/dbhelper.js'); //renamed and repurposed this file
-
+// const db = require('/controller.js')
 
 
 
@@ -65,7 +65,7 @@ var seeds = []
 
 
 
-console.log(db)
+// console.log(db)
 
 
   module.exports = seeds;
