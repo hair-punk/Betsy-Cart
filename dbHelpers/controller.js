@@ -1,13 +1,13 @@
 
 
-var Kart = require('./schema');
+const Kart = require('./schema');
 const mongoose = require('mongoose')
 
-  const connect = () => {
-  mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
-  console.log(" * *    * * * * *    * * **    * * *    * * *    * * *connecting to mongoose server")
-}
+const conn = mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true})
 
+// const kill = () => {
+   
+// }
 // const find = () => {
 // }
 const create = (input) => {
@@ -19,7 +19,7 @@ const create = (input) => {
           console.log(err)
           console.log(" | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | ")
         } else {
-          console.log("Data is= " + data)
+          // console.log("Data is= " + data)
         }
       })
   } else {
@@ -29,13 +29,21 @@ const create = (input) => {
         console.log(err)
         console.log(" | | | * | | | | * | | | | * | | | | | | * | | | | | * | | | | | | | | | | * | | ")
       } else {
-        console.log("Data is= " + data)
+        // console.log("Data is= " + data)
       }
     })
   }
   
 }
-const getAll = () => {
+const getAll = (callback) => {
+  Kart.find({}, (err, data) => {
+    if(err){
+      callback(err, null)
+      console.log("error in get all of controller")
+    } else {
+      callback(null, data);
+    }
+  } )
   
 }
 const clear = () => {
@@ -45,6 +53,7 @@ const clear = () => {
        console.log(err)
         console.log(" :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ")
     }
+    conn.connection.db.dropDatabase()
   })
 
   
@@ -53,12 +62,14 @@ const initialize = () => {
 
 }
 
+
 var dbMethods = {
-  connect: connect,
-  initialize: null,
+  connect: null,
+  // initialize: null,
   create: create,
   clear: clear,
-  getAll: null,
+  getAll: getAll,
+  // drop: kill,
   // updateWID: null, 
   // find: null,
 }

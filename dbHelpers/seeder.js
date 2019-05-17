@@ -7,7 +7,7 @@ const moment = require('Moment');
 
 
 // | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |
-var seedMaker = function(){
+var seedMaker = function() {
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - entropy section
   var rando100 = Math.floor(Math.random()* 100)
   var rando7 = Math.floor(Math.random()*7)

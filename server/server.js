@@ -4,4 +4,4 @@ const bodyParser = require('body-parser');
 
 var data = seeds;
 
-console.log(data.slice(0,2));
+// console.log(data.slice(0,2));
