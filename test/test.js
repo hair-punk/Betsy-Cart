@@ -19,6 +19,7 @@ describe("- - - - - - - - -SEEDS - - - - - - -", function() { // this is not tou
     expect(seeds[40].storeName.length).to.be.greaterThan(0);
 
     done()
+    //  db.dropCollection();
   })
 })
 
@@ -39,6 +40,11 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
     done();
   })
 
+  // afterEach(function(done) { 
+  //   db.dropCollection()
+  //   done();
+  // })
+
 
 
   it('Be able to create one product when passed an single object', function(done){
@@ -49,6 +55,7 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
     expect(result.storeName.length).to.be.greaterThan(0);
 
     done()
+     db.dropCollection();
     })
   })
   it('Also be able to load an entire array usign the same function without additional parameters', function(done){
@@ -64,6 +71,7 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
       expect(result[40].storeName.length).to.be.greaterThan(0); // this is nested because 
       
       done()
+       db.dropCollection();
       })
     })
 
@@ -81,10 +89,12 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
           expect(result[24].storeName.length).to.be.greaterThan(0);
       
           done()
+           db.dropCollection();
           })
       })
     })
   })
 
+ 
 
 

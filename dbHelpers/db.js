@@ -78,7 +78,12 @@ const create = (input, callback) => {  // creates either a database entry or an 
       
     })
   }
+
+
   
+  const dropCollection = (callback) => { // clears whole db
+    Kart.collection.drop()
+  }
+
   
-  
-module.exports = { clear, getAll, create}; //exporting methods to be used by other stuff
+module.exports = { clear, getAll, create, dropCollection}; //exporting methods to be used by other stuff
