@@ -8,15 +8,15 @@ const port = 3000
 
 app.use(bodyParser.json());
 // app.use(express.static('public/index.html'))
-
+app.use(express.static('public'));
 app.get("/", function(req,res ){
   res.sendFile(path.join(__dirname + "/public/index.html"))
-})
+});
 
 
 app.listen(port, ()=> {
     console.log("slowly strolling at port " + port)
-})
+});
 // var data = seeds;
 //nothing to see here yet lol
 // console.log(data.slice(0,2));

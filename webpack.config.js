@@ -1,24 +1,24 @@
-var path = require('path');
 
-var src = path.join(__dirname, '/src');
-var dest = path.join(__dirname, '/src');
+var path = require('path');
+var SRC_DIR = path.join(__dirname, '/src');
+var DIST_DIR = path.join(__dirname, '/public');
 
 module.exports = {
-    entry: `${src}/app.jsx`,
-    output: {
-        filename: 'bundle.js',
-        path: dest,
-    },
-    module: {
-        rules: [
-            {
-                test: /\.jsx?/,
-                include: src,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['@babel/react', 'es2015']
-                }
-            }
-        ]
+entry: `${SRC_DIR}/app.jsx`,
+output: {
+    filename: 'bundle.js',
+    path: DIST_DIR
+},
+module : {
+    rules : [
+    {
+        test : /\.jsx?/,
+        include : SRC_DIR,
+        loader : 'babel-loader',
+        query: {
+        presets: ['react', 'es2015']
+        }
     }
+    ]
+}
 };

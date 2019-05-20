@@ -1,8 +1,23 @@
 const React = require('react');
-const ReactDom = require('react-dom');
+const ReactDOM = require('react-dom');
 const Main = require('./main.jsx')
 
-ReactDom.render(
-  <Main />,
-  document.getElementById('root')
-)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentItem: {}
+    }
+  }
+
+  componenetDidMount(){};
+
+  render() {
+    return (
+      <Main />
+    )
+  }
+}
+
+ReactDOM.render(<App/>, document.getElementById("tjn-root"))
+//what is going on

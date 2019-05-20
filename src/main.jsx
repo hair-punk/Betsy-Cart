@@ -1,17 +1,8 @@
-const React = require('react');
+import React from 'react'
 
-class Main extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      item: null
-    }
-  }
-  render() {
-    return(
-      <div><h1>I love dumplings</h1></div>
-    );
-  }
-}
+var Main = (props) =>  (
+      <h1>I love dumplings</h1>
+    )
 
-module.exports = Main
+
+export default Main;
