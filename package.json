@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "test": "mocha test/test.js -w",
-    "start": "nodemon server/server.js",
+    "start": "nodemon server.js",
     "seed": "node dbHelpers/dbSeed.js",
     "clear": "node dbHelpers/dbClear.js",
     "drop": "node dbHelpers/dbDrop.js"
