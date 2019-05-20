@@ -1,0 +1,39 @@
+{
+  "name": "kart-and-info",
+  "version": "1.0.0",
+  "description": "This is a test to see if I can merge",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "mocha test/test.js -w",
+    "start": "nodemon server/server.js",
+    "seed": "node dbHelpers/dbSeed.js",
+    "clear": "node dbHelpers/dbClear.js",
+    "drop": "node dbHelpers/dbDrop.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fec-team-2/kart-and-info.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fec-team-2/kart-and-info/issues"
+  },
+  "homepage": "https://github.com/fec-team-2/kart-and-info#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "mocha": "^6.1.4",
+    "moment": "^2.24.0",
+    "mongoose": "^5.5.9"
+  }
+}
