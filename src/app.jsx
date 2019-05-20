@@ -1,6 +1,10 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const Main = require('./main.jsx')
+import {Deets} from './itemDeets.jsx'
+import {Options} from './optionsAndCart.jsx'
+import {Rating} from './rating.jsx'
+import {Shipping} from './shippingAndReturns.jsx'
+import {Header} from './productHeader.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +18,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <Main />
+      <div><Deets /> <Options /> <Rating /> <Shipping /> <Header /></div>
     )
   }
 }
