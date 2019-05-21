@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path')
 const app = express();
 
-const port = 3000
+const port = 3002
 
 app.use(bodyParser.json());
 // app.use(express.static('public/index.html'))
@@ -13,6 +13,11 @@ app.get("/", function(req,res ){
   res.sendFile(path.join(__dirname + "/public/index.html"))
 });
 
+app.get("/items", function(req, res) {
+   db.getAll((err, data) => {
+     res.send(data).status(200)
+   });
+})
 
 app.listen(port, ()=> {
     console.log("slowly strolling at port " + port)

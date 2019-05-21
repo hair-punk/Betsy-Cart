@@ -46,12 +46,13 @@ var output = {
     price:   "$"+ faker.finance.amount(2, 300),
     quantity:  rando100,
     buyoptions:   even?buyOptions.color:buyOptions.size, // either will give the product a size or a color
-    shipping:  {
+
       eta: [moment().add(rando7>3?rando7-2:rando7, 'days').format("MMM-D"), moment().add(rando7+1, 'days').format("MMM-D")], //gives two random dates in the future that are spread between 1-3 days apart and begin within 1-3 days of now. that math might be a little off but thats essentially what this does.
-      price,
-      location: `${faker.address.city()}, ${faker.address.state()}`
-    },
+      shipprice: price,
+      location: `${faker.address.city()}, ${faker.address.state()}`,
+    
     stars: randoStars,
+    numStars: randoStars*rando100,
     peopleWantThis: rando7>4?`Over ${rando7*rando3} people have this in their carts right now.`: null //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
 }
 return output;

@@ -12,9 +12,10 @@ kartSchema = new Schema({
     quantity:  Number,
     buyoptions:  [{type: String}],
     eta:  [{type: String}],
-    price:  String,
+    shipprice:  String,
     location:  String,
     stars:  Number,
+    numStars: Number,
     peopleWantThis:  String
 })
 kartSchema.set('validateBeforeSave', false); // This is supposed to make it so the model is not enforced. I only have it set up this way becasue some of the values such as people want this are occasionally null and null values cannot be passed in where a string is suppsoed to go. 
@@ -57,6 +58,7 @@ const create = (input, callback) => {  // creates either a database entry or an 
     Kart.find({}, function(err, data) {
       if(err){
         // callback(err, null)
+        
         console.log("error in get all of controller")
       } else {
         callback(null, data);

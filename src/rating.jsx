@@ -1,15 +1,10 @@
 import React from 'react';
 
-export class Rating extends React.Component {
-constructor(props){
-  super(props)
-}
-
-render(){
+ export var Rating  = function (props){
     return  (
-    <div><h1>fakeStoreName *****</h1></div>
+    <div>{props.storename}</div>
   )
-}
+  // number of reviews = {props.numStars} average reveiw = {props.stars} / 5
 
 }
 

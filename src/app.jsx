@@ -1,5 +1,6 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const axios = require('axios')
 import {Deets} from './itemDeets.jsx'
 import {Options} from './optionsAndCart.jsx'
 import {Rating} from './rating.jsx'
@@ -10,15 +11,48 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentItem: {}
+      items: []
     }
+    
+    this.clickHandle = this.clickHandle.bind(this)
   }
-
-  componenetDidMount(){};
+clickHandle(){
+  console.log("CLICK BABY!")
+}
+componentDidMount(){
+    axios.get("/items")
+    .then(results => {
+      this.setState({
+        items: results.data
+      })
+    })
+    .then(idk => {
+      console.log('------------------------------------');
+      console.log(this.state.items[0]["storeName"]);
+      console.log('------------------------------------');
+    })
+    .catch(err => {
+      if(err){
+        console.log('------------------------------------');
+        console.log("err in app.jsx")
+        console.log(err)
+        console.log("err", err)
+        console.log('------------------------------------');
+      }
+    })
+}
 
   render() {
     return (
-      <div><Deets /> <Options /> <Rating /> <Shipping /> <Header /></div>
+      <div>
+      <Rating storeName={this.state.items[0]["storeName"]} 
+      // stars={this.state.stars} numStars={this.state.numStars} 
+      /> 
+      {/* <Header itemtitle={} itemprice={} messageseller={this.clickHandle} />
+      <Options quantity={} options={} peoplewantthis={} cartclick={this.clickHandle} /> 
+      <Deets description={} /> 
+      <Shipping shipprice={} location={}  />  */}
+      </div>
     )
   }
 }
