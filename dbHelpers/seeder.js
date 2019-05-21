@@ -37,9 +37,18 @@ if(price.indexOf(".") === -1){
 if(rando100 < 10) {
   price=price+"0"
 }
+
+var storeName = (faker.company.bsAdjective()+ " " + faker.random.word())
+var splitSN = storeName.split(" ");
+storeName = splitSN.map(word => {
+  var letter = word[0];
+  letter = letter.toUpperCase();
+  var newWord = letter+ word.slice(1, word.length)
+  return newWord
+}).join(" ")
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together 
 var output = {
-   storeName: (faker.company.bsAdjective()+ " " + faker.commerce.productAdjective() +  " " + faker.random.word()),
+   storeName: storeName,
     title: ( faker.commerce.productAdjective()  + faker.commerce.product()),
     description: faker.lorem.paragraph(Math.floor(Math.random()*15)+1),
     url: faker.internet.url(),
