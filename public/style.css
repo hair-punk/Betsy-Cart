@@ -8,9 +8,22 @@
 .tjn-flex {
   display: flex;
   align-items: center;
-  justify-content: space-evenly
+  
+}
+.tjn-flex-col {
+  flex-direction: column;
 }
 
 .tjn-flex-row {
   flex-direction: row;
+}
+.tjn-flex-between {
+  justify-content: space-between;
+
+}
+.tjn-flex-evenly {
+  justify-content:  space-evenly;
+}
+.tjn-price-and-message {
+  width: 100%;
 }

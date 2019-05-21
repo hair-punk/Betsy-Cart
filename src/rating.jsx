@@ -5,7 +5,7 @@ import {Stars} from './stars.jsx';
 
   
     return  (
-    <div className="tjn-flex tjn-flex-row">
+    <div className="tjn-flex tjn-flex-row tjn-flex-evenly">
     <a href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> <Stars starAvg={props.stars}/> ({props.numStars})
     </div>
   )

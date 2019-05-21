@@ -1,17 +1,17 @@
 import React from 'react';
 
-export class Header extends React.Component {
-constructor(props){
-  super(props)
-}
-
-render(){
+export const Header = function(props) {
     return  (
-    <div><h1>fakeproduct name blah bla email seller </h1></div>
+    <div className="tjn-flex tjn-flex-col">
+      <div className="tjn-itemTitle">{props.itemtitle}.</div>
+      <div className="tjn-flex tjn-flex-row tjn-flex-between tjn-price-and-message">
+        <div>{props.itemprice}+ </div> <button>Message Seller</button>
+      </div>
+    </div>
   )
 }
 
-}
+
 
 // import React from 'react';
 
