@@ -50,7 +50,14 @@ storeName = splitSN.map(word => {
 var output = {
    storeName: storeName,
     title: ( faker.commerce.productAdjective()  + faker.commerce.product()),
-    description: faker.lorem.paragraph(Math.floor(Math.random()*15)+1),
+    description: [
+      faker.lorem.sentence(randoStars+rando7+rando3), 
+      faker.lorem.sentence(rando7+4),
+      faker.lorem.paragraph(rando3), 
+      faker.lorem.sentence(rando3*4),
+      faker.lorem.sentence(rando3*8),
+      faker.lorem.paragraph(rando7), 
+    ],
     url: faker.internet.url(),
     price:   "$"+ faker.finance.amount(2, 300),
     quantity:  rando100,

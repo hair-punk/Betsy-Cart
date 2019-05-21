@@ -70,7 +70,7 @@ componentDidMount(){
       <hr></hr>
       <Deets description={this.state.items[0]["description"]} /> 
       <hr></hr>
-      <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  /> 
+      <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  eta={this.state.items[0]["eta"]} /> 
       <hr></hr>
       </div>
     )

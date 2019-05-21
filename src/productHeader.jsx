@@ -3,7 +3,7 @@ import React from 'react';
 export const Header = function(props) {
     return  (
     <div className="tjn-flex tjn-flex-col">
-      <div className="tjn-itemTitle">{props.itemtitle}.</div>
+      <div className="tjn-itemTitle tjn-align-start">{props.itemtitle}.</div>
       <div className="tjn-flex tjn-flex-row tjn-flex-between tjn-price-and-message">
         <div>{props.itemprice}+ </div> <button>Message Seller</button>
       </div>

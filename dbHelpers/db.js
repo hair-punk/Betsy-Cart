@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 kartSchema = new Schema({
     storeName:  String,
     title:  String,
-    description:  String,
+    description:  [{type: String}],
     url:  String,
     price:  String,
     quantity:  Number,

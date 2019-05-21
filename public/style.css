@@ -30,3 +30,21 @@
 .tjn-price-and-message {
   width: 100%;
 }
+
+.tjn-mini-header {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.tjn-align-start {
+  align-self: flex-start;
+}
+
+.tjn-deets {
+  align-items: flex-start;
+}
+
+.tjn-shipping {
+  width: 100%;
+  height: 40vh;
+}
