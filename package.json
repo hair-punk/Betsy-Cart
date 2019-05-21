@@ -8,7 +8,7 @@
     "start": "nodemon server.js",
     "build": "webpack  -d --watch",
     "seed": "node dbHelpers/dbSeed.js",
-    "clear": "node dbHelpers/dbClear.js",
+    "reset": "node dbHelpers/dbReset.js --watch",
     "drop": "node dbHelpers/dbDrop.js"
   },
   "repository": {

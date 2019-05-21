@@ -19,6 +19,9 @@
 }
 .tjn-flex-between {
   justify-content: space-between;
+}
+.tjn-flex-around {
+  justify-content: space-around;
 
 }
 .tjn-flex-evenly {

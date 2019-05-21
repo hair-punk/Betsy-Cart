@@ -11,7 +11,7 @@ var seedMaker = function() {
 
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - entropy section
   var rando100 = Math.floor(Math.random()* 100)
-  var rando7 = Math.floor(Math.random()*7)
+  var rando7 = Math.ceil(Math.random()*7)
   var rando3 = Math.floor(Math.random()*3)
   var randoStars =  Math.floor(Math.random()*10)/2;
   var even = (rando7 %2 === 0)
@@ -61,7 +61,7 @@ var output = {
       location: `${faker.address.city()}, ${faker.address.state()}`,
     
     stars: randoStars,
-    numStars: randoStars*rando100,
+    numStars: Math.floor(randoStars*rando100),
     peopleWantThis: rando7>4?`Over ${rando7*rando3} people have this in their carts right now.`: null //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
 }
 return output;
