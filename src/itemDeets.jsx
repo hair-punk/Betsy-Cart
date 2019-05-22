@@ -14,9 +14,4 @@ export  const Deets = (props) =>  (
   )
 
 
-// import React from 'react';
-
-// export var Main = () =>  (
-//     <div><h1>I fry dumplings</h1></div>
-//   )
-{/* <Deets description={this.state.items[0]["description"]} />  */}
+  // + Learn more about this item

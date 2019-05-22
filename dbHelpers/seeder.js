@@ -13,7 +13,7 @@ var seedMaker = function() {
   var rando100 = Math.floor(Math.random()* 100)
   var rando7 = Math.ceil(Math.random()*7)
   var rando3 = Math.floor(Math.random()*3)
-  var randoStars =  Math.floor(Math.random()*10)/2;
+  var randoStars =  .5+ Math.floor(Math.random()*10)/2;
   var even = (rando7 %2 === 0)
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - - - Product choices (colors or sizes)
   var buyOptions = {
@@ -38,7 +38,7 @@ if(rando100 < 10) {
   price=price+"0"
 }
 
-var storeName = (faker.company.bsAdjective()+ " " + faker.random.word())
+var storeName = (faker.company.bsAdjective()+ " " + faker.random.word() + ", LLC")
 var splitSN = storeName.split(" ");
 storeName = splitSN.map(word => {
   var letter = word[0];
@@ -46,16 +46,28 @@ storeName = splitSN.map(word => {
   var newWord = letter+ word.slice(1, word.length)
   return newWord
 }).join(" ")
+
+var title = function(){
+  var result = faker.commerce.productAdjective() + " " + faker.commerce.productAdjective()  + faker.commerce.product()+" | "
+
+  for(let i=0; i<=rando7; i++){
+    result += (" "+ faker.commerce.productAdjective())
+    if(even && i===2){
+      result += faker.commerce.color()
+    }
+  }
+  return result;
+}
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together 
 var output = {
    storeName: storeName,
-    title: ( faker.commerce.productAdjective()  + faker.commerce.product()),
+    title: title(),
     description: [
       faker.lorem.sentence(randoStars+rando7+rando3), 
       faker.lorem.sentence(rando7+4),
       faker.lorem.paragraph(rando3), 
-      faker.lorem.sentence(rando3*4),
-      faker.lorem.sentence(rando3*8),
+      faker.lorem.sentence(rando3*4 +4),
+      faker.lorem.sentence(rando3*8 +5),
       faker.lorem.paragraph(rando7), 
     ],
     url: faker.internet.url(),

@@ -3,9 +3,9 @@ import React from 'react';
 export const Header = function(props) {
     return  (
     <div className="tjn-flex tjn-flex-col">
-      <div className="tjn-itemTitle tjn-align-start">{props.itemtitle}.</div>
+      <div className="tjn-itemTitle tjn-align-start">{props.itemtitle}</div>
       <div className="tjn-flex tjn-flex-row tjn-flex-between tjn-price-and-message">
-        <div>{props.itemprice}+ </div> <button>Message Seller</button>
+        <div className="tjn-itemPrice">{props.itemprice}+ </div> <button>Message Seller</button>
       </div>
     </div>
   )
@@ -13,8 +13,4 @@ export const Header = function(props) {
  //
 
 
-// import React from 'react';
-
-// export var Main = () =>  (
-//     <div><h1>I fry dumplings</h1></div>
-//   )//
+//add in the you save $etc

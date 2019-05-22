@@ -38,6 +38,9 @@
 
 
  /* - - - - - - - -  font stuff  - - - - - - -  - - - - - -  */
+ *{
+  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+ }
 .tjn-mini-header {
   font-weight: bold;
   font-size: 1.1em;
@@ -49,11 +52,34 @@
   padding-top: 3vw;
   padding-bottom: .85vw;
 }
+
+.tjn-storename{
+  text-decoration: none;
+  font-size: 14px;
+  color: #757575;
+}
+.tjn-storename{
+  text-decoration: none;
+  font-size: 14px;
+}
+
+ .tjn-storename:focus, .tjn-storename:active, .tjn-storename:visited {
+  text-decoration: none;
+  color: #757575;
+}
+.tjn-storename:hover{
+  text-decoration: underline;
+}
+
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 
 .tjn-itemTitle {
-  font-size: 1.6em;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333333;
+  font-family: "Guardian-EgypTT",Arial,sans-serif;
 }
 
 .tjn-price-and-message {
@@ -71,5 +97,21 @@
 }
 
 .tjn-rating {
-  padding-right: 1.75vw;
+  padding-right: 1.2vw;
+}
+
+.tjn-rating-bar{
+ height: 18px;
+ align-items: center;
+ margin-bottom: 6px;
+}
+
+.tjn-numstars {
+  font-size: 14px;
+}
+
+.tjn-itemPrice {
+  color: #222222;
+  font-size: 18px;
+  font-weight: 500;
 }

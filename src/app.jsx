@@ -24,7 +24,7 @@ class App extends React.Component {
         quantity:18,
         shipprice:"$3.18",
         location:"West Hillary, Ohio",
-        stars:4.5,
+        stars:4,
         numStars:18,
         peopleWantThis:"80 people want to buy this stupid peice of trash",
       }
@@ -63,7 +63,7 @@ componentDidMount(){
   render() {
     return (
       <div>
-      <Rating storeName={this.state.items[0]["storeName"]} stars={this.state.items[0].stars} numStars={this.state.items[0].numStars} /> 
+      <Rating storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
       <Options id={this.state.items[0]["_id"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
       <hr></hr>

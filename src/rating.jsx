@@ -6,10 +6,10 @@ import {Stars} from './stars.jsx';
   
     return  (
     <div className="tjn-flex tjn-flex-row tjn-rating-bar">
-    <a  className="tjn-rating" href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> 
-    <div className="tjn-rating"><Stars  starAvg={props.stars}/>
+    <a  className="tjn-rating tjn-storename" href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> 
+    <div className="tjn-rating tjn-avgstars"><Stars  starAvg={props.stars}/>
     </div>
-    <div className="tjn-rating">({props.numStars})</div>
+    <div className="tjn-rating tjn-numstars">({props.numStars})</div>
     </div>
   )
   // number of reviews = {props.numStars} average reveiw = {props.stars} / 5
