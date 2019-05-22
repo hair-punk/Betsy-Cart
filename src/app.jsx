@@ -66,16 +66,16 @@ componentDidMount(){
       <Rating storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
       <Options id={this.state.items[0]["_id"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
-      <hr></hr>
+      <hr className="tjn-hr"></hr>
       <Deets description={this.state.items[0]["description"]} /> 
 
-      <hr></hr>
+      <hr className="tjn-hr"></hr>
       <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  eta={this.state.items[0]["eta"]} /> 
-      <hr></hr>
+      <hr className="tjn-hr"></hr>
       </div>
     )
   }
 }
 
-ReactDOM.render(<App/>, document.getElementById("tjn-root"))
+ReactDOM.render(<App className="tjn-app"/>, document.getElementById("tjn-root"))
 //what is going on

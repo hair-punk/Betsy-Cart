@@ -14,15 +14,15 @@ export const Options = (props) => {
 return(
     <div className="tjn-flex tjn-flex-col tjn-flex-around tjn-optionsParent">
       <div className="tjn-optionHead">{optionHead}</div>
-      <div >
+
         <select className="tjn-options-drop-down">
           {props.options.map((elem) => <Option cursor={'&#8671;'} key={elem+"0230"} option={elem} />
           )}
          
         </select>
-      </div>
+    
       <button className="tjn-buyIt">Buy it now</button>
-      <button>Add to cart</button>
+      <button className="tjn-addToKart">Add to cart</button>
       <div>
         <PeopleWantThis want={props.peoplewantthis} />
       </div>

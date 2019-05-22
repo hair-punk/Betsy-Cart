@@ -162,7 +162,7 @@
   font-size: 14px;
   height: 38px;
   padding-left: 12px;
-  width: 99%;
+  width: 99vw;
   align-items: center;
   white-space: pre;
   text-rendering: auto;
@@ -178,7 +178,7 @@
 }
 
 .tjn-buyIt {
-  width: 99%;
+  width: 99vw;
   align-items: center;
   border: solid #222222 2px;
   -webkit-appearance: none;
@@ -190,7 +190,7 @@
 }
 .tjn-addToKart {
   
-  width: 99%;
+  width: 99vw;
   align-items: center;
   border: solid #222222 2px;
   -webkit-appearance: none;
@@ -211,14 +211,9 @@
 .tjn-hr {
   margin-bottom: 21px; 
   margin-top: 21px;
-  width: 97%;
-  color: #E1E3DF;
-  font-size: 10px;
+  width: 99vw;
+  color: #222222;
+  font-size: 14px;
   line-height: 1.4;
   font-weight: 200;
-  opacity: .5
-}
-
-.tjn-app {
-  width: 97vw;
 }
