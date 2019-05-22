@@ -58,18 +58,31 @@ var title = function(){
   }
   return result;
 }
+
+var description = function(){
+  var result = [
+    faker.lorem.sentence(randoStars+rando7+rando3), 
+    faker.lorem.sentence(rando7+4),
+    faker.lorem.paragraph(rando3), 
+    faker.lorem.sentence(rando3*4 +4),
+    faker.lorem.sentence(rando3*8 +5),
+    faker.lorem.paragraph(rando7), 
+  ]
+  
+
+  for(let i=0; i<= 1+(rando100/10); i++){
+    result.push(faker.lorem.sentence(rando3*8 +i*2))
+    if(even && i===2){
+      result.push(faker.lorem.paragraph(rando3*2+1))
+    }
+  }
+  return result;
+}
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together 
 var output = {
    storeName: storeName,
     title: title(),
-    description: [
-      faker.lorem.sentence(randoStars+rando7+rando3), 
-      faker.lorem.sentence(rando7+4),
-      faker.lorem.paragraph(rando3), 
-      faker.lorem.sentence(rando3*4 +4),
-      faker.lorem.sentence(rando3*8 +5),
-      faker.lorem.paragraph(rando7), 
-    ],
+    description: description(),
     url: faker.internet.url(),
     price:   "$"+ faker.finance.amount(2, 300),
     quantity:  rando100,
@@ -81,9 +94,9 @@ var output = {
     
     stars: randoStars,
     numStars: Math.floor(randoStars*rando100),
-    // peopleWantThis: rando7>4?`${rando7*rando3} people have this in their carts right now.`: null //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
+    peopleWantThis: rando7>4?`${rando7*rando3} people have this in their carts right now.`: null //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
 
-    peopleWantThis: `${rando7*rando3} people have this in their carts right now.`
+
 }
 return output;
 }
