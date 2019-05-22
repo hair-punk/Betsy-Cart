@@ -4,10 +4,10 @@
   color: red;
 } */
 
-
+ /* - - - - - - - -  FlexBox   - - - - - - -  - - - - - -  */
 .tjn-flex {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   
 }
 .tjn-flex-col {
@@ -27,17 +27,37 @@
 .tjn-flex-evenly {
   justify-content:  space-evenly;
 }
-.tjn-price-and-message {
-  width: 100%;
-}
-
-.tjn-mini-header {
-  font-weight: bold;
-  font-size: 1.2em;
-}
 
 .tjn-align-start {
   align-self: flex-start;
+}
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+
+
+
+ /* - - - - - - - -  font stuff  - - - - - - -  - - - - - -  */
+.tjn-mini-header {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-bottom: 2vh;
+}
+
+.tjn-mini-header2 {
+  font-weight:bold;
+  padding-top: 3vw;
+  padding-bottom: .85vw;
+}
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+
+.tjn-itemTitle {
+  font-size: 1.6em;
+}
+
+.tjn-price-and-message {
+  width: 100%;
 }
 
 .tjn-deets {
@@ -47,4 +67,9 @@
 .tjn-shipping {
   width: 100%;
   height: 40vh;
+  align-items: flex-start;
+}
+
+.tjn-rating {
+  padding-right: 1.75vw;
 }

@@ -27,7 +27,6 @@ class App extends React.Component {
         stars:4.5,
         numStars:18,
         peopleWantThis:"80 people want to buy this stupid peice of trash",
-        __v:0
       }
       ],
     }
@@ -69,6 +68,7 @@ componentDidMount(){
       <Options id={this.state.items[0]["_id"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
       <hr></hr>
       <Deets description={this.state.items[0]["description"]} /> 
+
       <hr></hr>
       <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  eta={this.state.items[0]["eta"]} /> 
       <hr></hr>

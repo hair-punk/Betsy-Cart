@@ -5,8 +5,11 @@ import {Stars} from './stars.jsx';
 
   
     return  (
-    <div className="tjn-flex tjn-flex-row tjn-flex-evenly">
-    <a href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> <Stars starAvg={props.stars}/> ({props.numStars})
+    <div className="tjn-flex tjn-flex-row tjn-rating-bar">
+    <a  className="tjn-rating" href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> 
+    <div className="tjn-rating"><Stars  starAvg={props.stars}/>
+    </div>
+    <div className="tjn-rating">({props.numStars})</div>
     </div>
   )
   // number of reviews = {props.numStars} average reveiw = {props.stars} / 5
