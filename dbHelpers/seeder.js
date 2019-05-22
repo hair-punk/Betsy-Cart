@@ -94,7 +94,7 @@ var output = {
     
     stars: randoStars,
     numStars: Math.floor(randoStars*rando100),
-    peopleWantThis: rando7>4?`${rando7*rando3} people have this in their carts right now.`: null //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
+    peopleWantThis: rando7>4?`${rando7*rando3} people have this in their carts right now.`: null, //otherpeople want this thing pops up sometimes in my module so I made it only happen if the rando7 number is higher than 4 and then have a p random amount of folks hungry for the product.
 
 
 }
@@ -103,7 +103,9 @@ return output;
 // | | | | | | | | | | | | | | | | | |- - - - -this is where we make 100 of these records
 var seeds = []
   for(let i = 0; i<100; i++) {
-    seeds.push(seedMaker())
+    var seed = seedMaker()
+    seed.tjnid= "tjn-id"+i.toString()
+    seeds.push(seed)
   }
   // console.log(seeds.slice(0,3)) //use this to check jsut 3 records 
 // | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |

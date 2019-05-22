@@ -9,9 +9,10 @@ db.create(seeds, (err, seeds) => {
   } else {
   console.log("Seeded the database - - - - - - - - !!");
   }
+  return
 })
 
-return
+
 
 // db.clear((err, data)=> {
 //   if(err){

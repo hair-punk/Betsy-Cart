@@ -16,7 +16,8 @@ kartSchema = new Schema({
     location:  String,
     stars:  Number,
     numStars: Number,
-    peopleWantThis:  String
+    peopleWantThis:  String,
+    tjnid: String
 })
 kartSchema.set('validateBeforeSave', false); // This is supposed to make it so the model is not enforced. I only have it set up this way becasue some of the values such as people want this are occasionally null and null values cannot be passed in where a string is suppsoed to go. 
 var Kart = mongoose.model('Kart', kartSchema)
@@ -82,10 +83,43 @@ const create = (input, callback) => {  // creates either a database entry or an 
   }
 
 
+  const getOne = (idOrName, callback) => {
+    var isName = idOrName.slice(0,6) === "tjn-id" ? false: true;
+
+    if(isName) {
+      Kart.find({title:  idOrName}, (err, results) => {
+        if(err){
+          console.log('error in the getOne controller')
+          console.log('isName & not id? =>  ', isName)
+           console.log(err)
+           callback(err, null)
+            console.log(" :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ")
+            throw err;
+        }else {
+          callback(null, results);
+      }})
+    }  else {
+      Kart.find({ tjnid:   idOrName} , (err, results) => {
+        if(err){
+          console.log('error in the getOne controller')
+          console.log('isName & not id? =>  ', isName)
+          console.log(err)
+          callback(err, null)
+          console.log(" :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ")
+          throw err;
+        }else {
+      
+          callback(null, results);
+     }
+   })
+  }
+}
+    
+
   
   const dropCollection = (callback) => { // clears whole db
     Kart.collection.drop()
   }
 
   
-module.exports = { clear, getAll, create, dropCollection}; //exporting methods to be used by other stuff
+module.exports = { clear, getAll, create, dropCollection, getOne}; //exporting methods to be used by other stuff

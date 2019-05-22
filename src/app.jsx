@@ -78,4 +78,3 @@ componentDidMount(){
 }
 
 ReactDOM.render(<App className="tjn-app"/>, document.getElementById("tjn-root"))
-//what is going on

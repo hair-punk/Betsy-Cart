@@ -25,3 +25,9 @@ app.listen(port, ()=> {
 // var data = seeds;
 //nothing to see here yet lol
 // console.log(data.slice(0,2));
+
+app.get("/items/id:", function(req, res) {
+  db.getAll((err, data) => {
+    res.send(data).status(200)
+  });
+})

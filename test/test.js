@@ -1,6 +1,8 @@
 const expect = require('chai').expect
 const seeds = require("../dbHelpers/seeder.js");
 const db = require('../dbHelpers/db.js');
+// var reset = require("../dbHelpers/dbReset.js")
+// const server = require("../server.js")
 
 
 describe("- - - - - - - - -SEEDS - - - - - - -", function() { // this is not touching mongo at all. Simply testing my controller seeder.js 
@@ -17,10 +19,11 @@ describe("- - - - - - - - -SEEDS - - - - - - -", function() { // this is not tou
     expect(seeds[99].storeName.length).to.be.greaterThan(0);
     expect(seeds[40].storeName).to.be.a('string');
     expect(seeds[40].storeName.length).to.be.greaterThan(0);
-
+   
     done()
     //  db.dropCollection();
   })
+  
 })
 
 
@@ -36,7 +39,10 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
       } else {
         console.log('ok')
       }
-    });
+    })
+    // .catch(err => {
+    //   console.log(err)
+    // })
     done();
   })
 
@@ -55,7 +61,7 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
     expect(result.storeName.length).to.be.greaterThan(0);
 
     done()
-     db.dropCollection();
+  
     })
   })
   it('Also be able to load an entire array usign the same function without additional parameters', function(done){
@@ -71,7 +77,7 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
       expect(result[40].storeName.length).to.be.greaterThan(0); // this is nested because 
       
       done()
-       db.dropCollection();
+    
       })
     })
 
@@ -89,12 +95,79 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
           expect(result[24].storeName.length).to.be.greaterThan(0);
       
           done()
-           db.dropCollection();
           })
       })
     })
-  })
+    it('Be able to look up a product via mongoose by "tjnid"', function(done) {
+
+      db.create(seeds, (err, result) =>{
+        db.getOne(seeds[3].tjnid, (error, data) => {
+          var item = data[0]
+          expect(error).to.equal(null);
+          expect(item["storeName"]).to.equal(seeds[3]["storeName"]);
+          expect(item.storeName).to.not.have.lengthOf(0)
+          expect(Object.keys(item)).to.have.lengthOf(6)
+          expect(item["tjnid"]).to.equal("tjn-id3")
+          
+          done()
+          })
+        })
+
+
+
+      });
+
+        it('Be able to look up a product via mongoose by by "title" (product name)', function(done) { 
+      
+            
+            db.create(seeds, (err, result) =>{
+              var testTitle= seeds[5].title
+  
+              db.getOne(testTitle,(error, data) => {
+                var item = data[0]
+                expect(error).to.equal(null);
+                expect(item["title"]).to.equal(testTitle);
+                expect(item["storeName"]).to.equal(seeds[5]["storeName"])
+                expect(Object.keys(item)).to.have.lengthOf(6)
+                expect(item["tjnid"]).to.equal("tjn-id5")
+
+                done()
+                })
+            })
+      })
+})
 
  
 
 
+describe("- - - - - - - API Routes - - - - - -", function() {
+  beforeEach(function(done){
+    db.dropCollection((err)=> {
+      if(err){
+        console.log('error in the clear before each')
+        console.log(err)
+        callback(err)
+      } else {
+        console.log('ok')
+      }
+    })
+    db.create(seeds, (error, result) => {
+      if(error){
+        console.log('error in the clear before each')
+        console.log(error)
+        callback(error)
+      }
+      done();
+    })
+  })
+
+
+  it('be able to get all via axios get call too /items)', function(done) { 
+      
+            
+
+
+      done()
+      })
+
+})
