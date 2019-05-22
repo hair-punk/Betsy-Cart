@@ -12,15 +12,16 @@ export const Options = (props) => {
   }
 
 return(
-    <div className="tjn-flex tjn-flex-col tjn-flex-around">
+    <div className="tjn-flex tjn-flex-col tjn-flex-around tjn-optionsParent">
       <div className="tjn-optionHead">{optionHead}</div>
-      <div className="tjn-options-drop-down">
-        <select>
-          {props.options.map((elem) => <Option key={elem+"0230"} option={elem} />
+      <div >
+        <select className="tjn-options-drop-down">
+          {props.options.map((elem) => <Option cursor={'&#8671;'} key={elem+"0230"} option={elem} />
           )}
+         
         </select>
       </div>
-      <button>Buy it now</button>
+      <button className="tjn-buyIt">Buy it now</button>
       <button>Add to cart</button>
       <div>
         <PeopleWantThis want={props.peoplewantthis} />
@@ -30,18 +31,4 @@ return(
 }
 
 
-// var VideoList = (props) => (
-//   <div className="video-list">
-//     {props.videos.map((video) => {
-//       return <VideoListEntry click={props.click} video={video} key={video.id.videoId} />
-//     })}
-//   </div>
-// );
-
-
-
-// import React from 'react';
-
-// export var Main = () =>  (
-//     <div><h1>I fry dumplings</h1></div>
-//   )
+// add state to options button

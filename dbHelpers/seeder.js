@@ -53,7 +53,7 @@ var title = function(){
   for(let i=0; i<=rando7; i++){
     result += (" "+ faker.commerce.productAdjective())
     if(even && i===2){
-      result += faker.commerce.color()
+      result += " " + faker.commerce.color()
     }
   }
   return result;
