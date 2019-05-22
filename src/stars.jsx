@@ -1,10 +1,9 @@
 import React from 'react';
-import {starObj}  from "./starObj.js"
+import {starObj}  from "./starObj.js" // just a way to use fontAwesome to dynamically render
 
 
 export var Stars = function(props)  {
 
-  
     return  (
     <div>
     <i className={starObj[props.starAvg.toString()][0]}></i>

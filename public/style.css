@@ -131,7 +131,8 @@
 
 .tjn-shipping {
   width: 99%;
-  height: 40vh;
+  height: auto;
+  max-height: 40vh;
   align-items: flex-start;
 }
 
