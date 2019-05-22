@@ -43,14 +43,17 @@
   text-rendering: optimizeLegibility;
  }
 .tjn-mini-header {
-  font-weight: bold;
-  font-size: 1.1em;
+  font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
   padding-bottom: 2vh;
+  font-weight: 550;
 }
 
 .tjn-mini-header2 {
-  font-weight:bold;
+  font-weight:560;
   padding-top: 3vw;
+  font-size: 14px;
   padding-bottom: .85vw;
 }
 
@@ -91,9 +94,40 @@
   width: 99%;
 }
 
+
+
+
+
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
 .tjn-deets {
   align-items: flex-start;
+  height:auto;
+  max-height: 70vh;
+  overflow-y: scroll;
 }
+
+.tjn-deet-p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  opacity: .97;
+  
+}
+.tjn-deet-p1{
+ padding-bottom: 10px;
+}
+.tjn-deet-p1{
+  padding-bottom: 15px;
+ }
+ .tjn-deet-p4{
+  padding-bottom: 25px;
+ }
+
+ 
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
+
+
 
 .tjn-shipping {
   width: 99%;
@@ -108,17 +142,18 @@
 .tjn-rating-bar{
  height: 18px;
  align-items: center;
- margin-bottom: 6px;
+ margin-bottom: 14px;
 }
 
 .tjn-numstars {
   font-size: 14px;
+ 
 }
 
 .tjn-itemPrice {
   color: #222222;
   font-size: 18px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 
@@ -178,24 +213,25 @@
 }
 
 .tjn-buyIt {
+  font-weight:  650;
   width: 99%;
   align-items: center;
   border: solid #222222 2px;
   -webkit-appearance: none;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 15px;
   padding: 8px 12px;
   margin-top: 6px;
   margin-bottom: 12px;
 }
 .tjn-addToKart {
-  
+  font-weight:  650;
   width: 99%;
   align-items: center;
   border: solid #222222 2px;
   -webkit-appearance: none;
   border-radius: 3px;
-  font-size: 18px;
+  font-size: 15px;
   padding: 8px 12px;
   color: #FFFF; 
   background-color: #222222;
@@ -204,9 +240,13 @@
 
 .tjn-peopleWant {
   font-size: 14px;
+  margin-top: 3px;
   line-height: 1.4;
   text-align: left;
+  opacity: .96;
 }
+
+
 
 .tjn-hr {
   margin-bottom: 21px; 
@@ -216,9 +256,33 @@
   font-size: 10px;
   line-height: 1.4;
   font-weight: 200;
-  opacity: .5
+  opacity: .3;
 }
 
 .tjn-app {
   width: 97vw;
+}
+
+
+.tjn-needItSoon {
+  font-size: 12px;
+  opacity: .7;
+  margin-bottom: 8px;
+}
+
+.tjn-toFromShipping {
+  font-size: 14px;
+  /* font-weight: 200; */
+  
+}
+
+.tjn-customerLocation {
+  text-decoration: underline
+}
+
+.tjn-from {
+  margin-bottom: 1vh;
+}
+.tjn-to {
+  margin-bottom: 2vh;
 }
