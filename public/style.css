@@ -178,7 +178,7 @@
   border-color: rgba(0, 0, 0, 0.521);
 }
 ≈
-.tjn-optionHead {
+.tjn-optionHead, .tjn-quantityHead{
   color: #444444;
   font-size:14px;
   margin-bottom: 3px;
@@ -186,7 +186,7 @@
   
 }
 
-.tjn-options-drop-down {
+.tjn-options-drop-down, .tjn-quantity-drop-down {
   background-color: #ffffff;
   border-color: rgba(0,0,0,0.15);
   box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);

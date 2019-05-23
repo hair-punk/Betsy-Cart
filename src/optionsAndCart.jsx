@@ -1,6 +1,7 @@
 import React from 'react';
 import {Option} from "./option.jsx"
 import {PeopleWantThis} from "./peoplewantthis.jsx"
+import {Quantity} from "./quantity.jsx"
 var optionHead = ""
 
 
@@ -10,17 +11,22 @@ export const Options = (props) => {
   } else {
     optionHead = "Size"
   }
+  var quantArray = [];
+  for(let i=1; i<= props.quantity; i++){
+    quantArray.push(i)
+  }
 
 return(
     <div className="tjn-flex tjn-flex-col tjn-flex-around tjn-optionsParent">
-      <div className="tjn-optionHead">{optionHead}</div>
-     
-      {/* <select className="tjn-quantity-drop-down">
-          {props.options.map((elem) => <Quantity  key={elem+props.id} quantity={elem} />
+        
+        <div className="tjn-quantityHead">Quantity</div>
+        <select className="tjn-quantity-drop-down">
+          {quantArray.map((elem) => <Quantity  key={elem+props.id} quantity={elem} />
           )}
-         
-         
-        </select> */}
+        </select>
+
+
+        <div className="tjn-optionHead">{optionHead}</div>
         <select className="tjn-options-drop-down">
           {props.options.map((elem) => <Option   key={elem+props.id} option={elem} />
           )}
