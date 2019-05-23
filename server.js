@@ -15,14 +15,16 @@ app.get("/", function(req,res ){
   res.sendFile(path.join(__dirname + "/public/index.html"))
 });
 
-app.get("/item/id:", function(req, res) {
-  db.getOne("tjn-id" + req.params.id, (err, data) => {
-    console.log('hello')
+app.get("/items/:id", function(req, res) { // this route is pretty smart. you can either pass the array value which corrisponds to the tjnid which on item reads  {tjnid: "tjn-id24"} for example. All that is passed in for the id here is 24 in that case. This route is smart because it works equally as well with the item name.
+  db.getOne(req.params.id, (err, data) => {
+    if(err || data.length===0){
+      res.status(404).send("error, item not found")
+    }
     res.send(data).status(200);
   });
 })
 
-app.get("/items/", function(req, res) {
+app.get("/items/", function(req, res) { // gets all items in db
    db.getAll((err, data) => {
      res.send(data).status(200)
    });

@@ -84,10 +84,11 @@ const create = (input, callback) => {  // creates either a database entry or an 
 
 
   const getOne = (idOrName, callback) => {
-    var isName = idOrName.slice(0,6) === "tjn-id" ? false: true;
+    var isName = idOrName.length < 3 ? false: true;
 
     if(isName) {
-      Kart.find({title:  idOrName}, (err, results) => {
+      var name = idOrName
+      Kart.find({title:  name}, (err, results) => {
         if(err){
           console.log('error in the getOne controller')
           console.log('isName & not id? =>  ', isName)
@@ -99,7 +100,12 @@ const create = (input, callback) => {  // creates either a database entry or an 
           callback(null, results);
       }})
     }  else {
-      Kart.find({ tjnid:   idOrName} , (err, results) => {
+      var id = "tjn-id" + idOrName
+      console.log('------------------------------------');
+      console.log(id);
+      console.log('------------------------------------');
+      Kart.find({ tjnid:   id} , (err, results) => {
+        console.log()
         if(err){
           console.log('error in the getOne controller')
           console.log('isName & not id? =>  ', isName)
