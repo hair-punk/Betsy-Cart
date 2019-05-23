@@ -17,13 +17,18 @@ var seedMaker = function() {
   var even = (rando7 %2 === 0)
 //- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - - - Product choices (colors or sizes)
   var buyOptions = {
-    size: ["xSmall", "Small", "Medium", "Large", "xLarge"],
-    color: []
+    size: ["Select your size", "xSmall", "Small", "Medium", "Large", "xLarge"],
+    color: ["Select a color"]
   }
   var n = rando7
   while(n) {
     if(even) {
-      buyOptions.color.push(faker.commerce.color()) //this while loop creates a random amount of color options between 1-7 when rando is even (so just giving the user either size options or color somewhat randomly but roughly 50% of thetime at scale)
+      var color = faker.commerce.color();
+      var split = color.split(""); 
+      var letter = split[0].toUpperCase();
+      color = letter+ split.slice(1,split.length).join("")
+
+      buyOptions.color.push(color) //this while loop creates a random amount of color options between 1-7 when rando is even (so just giving the user either size options or color somewhat randomly but roughly 50% of thetime at scale)
     }
     n --
   }

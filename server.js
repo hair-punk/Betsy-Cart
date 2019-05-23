@@ -12,6 +12,14 @@ app.use(express.urlencoded())
 app.use(express.static('public'));
 app.get("/", function(req,res ){
   // console.log("BLAH")
+  // if(req.params.id.length>0){
+  //   db.getOne(req.params.id, (err, data) => {
+  //     if(err || data.length===0){
+  //       res.status(404).send("error, item not found")
+  //     }
+  //     res.send(data).status(200);
+  //   });
+  // }
   res.sendFile(path.join(__dirname + "/public/index.html"))
 });
 
@@ -24,7 +32,7 @@ app.get("/items/:id", function(req, res) { // this route is pretty smart. you ca
   });
 })
 
-app.get("/items/", function(req, res) { // gets all items in db
+app.get("/items/", function(req, res) { // gets all items in
    db.getAll((err, data) => {
      res.send(data).status(200)
    });

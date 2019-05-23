@@ -101,9 +101,7 @@ const create = (input, callback) => {  // creates either a database entry or an 
       }})
     }  else {
       var id = "tjn-id" + idOrName
-      console.log('------------------------------------');
-      console.log(id);
-      console.log('------------------------------------');
+  
       Kart.find({ tjnid:   id} , (err, results) => {
         console.log()
         if(err){

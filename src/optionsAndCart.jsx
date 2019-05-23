@@ -5,7 +5,7 @@ var optionHead = ""
 
 
 export const Options = (props) => {
-  if(props.options[0] !== "xSmall") {
+  if(props.options[0] !== "Select your size") {
     optionHead = "Color"
   } else {
     optionHead = "Size"
@@ -16,8 +16,9 @@ return(
       <div className="tjn-optionHead">{optionHead}</div>
 
         <select className="tjn-options-drop-down">
-          {props.options.map((elem) => <Option cursor={'&#8671;'} key={elem+"0230"} option={elem} />
+          {props.options.map((elem) => <Option   key={elem+props.id} option={elem} />
           )}
+          {/* cursor={'&#8671;'} */}
          
         </select>
     

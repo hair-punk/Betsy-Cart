@@ -13,7 +13,7 @@ class App extends React.Component {
     this.state = {
       items: [
         {
-        buyoptions:["fuchsia","lime","purple","maroon"],
+        buyoptions:["Select an option", "fuchsia","lime","purple","maroon"],
         eta:["May-22","May-25"],
         _id:"5ce3505e133ed98819ec9849",
         storeName:"granular Incredible fault-tolerant",
@@ -27,6 +27,7 @@ class App extends React.Component {
         stars:4,
         numStars:18,
         peopleWantThis:"80 people want to buy this stupid peice of trash",
+        tjnid: "tjn-id8"
       }
       ],
     }
@@ -37,7 +38,7 @@ clickHandle(){
   console.log("CLICK BABY!")
 }
 componentDidMount(){
-    axios.get("/items")
+    axios.get("/items/5")
     .then(results => {
       this.setState({
         items: results.data
@@ -65,7 +66,7 @@ componentDidMount(){
       <div>
       <Rating storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
-      <Options id={this.state.items[0]["_id"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
+      <Options  id={this.state.items[0]["tjnid"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
       <hr className="tjn-hr"></hr>
       <Deets description={this.state.items[0]["description"]} /> 
 

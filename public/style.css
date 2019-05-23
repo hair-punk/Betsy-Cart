@@ -53,21 +53,18 @@
   padding-bottom: .85vw;
 }
 
-.tjn-storename{
+.tjn-storename, .tjn-numstars{
   text-decoration: none;
   font-size: 14px;
   color: #757575;
-}
-.tjn-storename{
-  text-decoration: none;
-  font-size: 14px;
 }
 
- .tjn-storename:focus, .tjn-storename:active, .tjn-storename:visited {
+
+ .tjn-storename:focus, .tjn-storename:active, .tjn-storename:visited, .tjn-numstars:active, .tjn-numstars:focus, .tjn-numstars:visited {
   text-decoration: none;
   color: #757575;
 }
-.tjn-storename:hover{
+.tjn-storename:hover, .tjn-numstars:hover{
   text-decoration: underline;
 }
 
@@ -217,6 +214,19 @@
   margin-top: 6px;
   margin-bottom: 12px;
 }
+
+.tjn-buyIt:hover {
+  width: 99%;
+  align-items: center;
+  border: solid #222222 2px;
+  -webkit-appearance: none;
+  border-radius: 3px;
+  font-size: 15px;
+  padding: 8px 12px;
+  color: #FFFF; 
+  background-color: #222222;
+  margin-bottom: 12px;
+}
 .tjn-addToKart {
   font-weight:  650;
   width: 99%;
@@ -229,6 +239,9 @@
   color: #FFFF; 
   background-color: #222222;
   margin-bottom: 12px;
+}
+.tjn-addToKart:hover{
+  opacity: .9;
 }
 
 .tjn-peopleWant {
