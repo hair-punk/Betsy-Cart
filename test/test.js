@@ -1,6 +1,7 @@
 const expect = require('chai').expect
 const seeds = require("../dbHelpers/seeder.js");
 const db = require('../dbHelpers/db.js');
+const axios = require('axios');
 // var reset = require("../dbHelpers/dbReset.js")
 // const server = require("../server.js")
 
@@ -101,7 +102,7 @@ describe("- - - - - - - DB_METHODS - - - - - -", function() {
     it('Be able to look up a product via mongoose by "tjnid"', function(done) {
 
       db.create(seeds, (err, result) =>{
-        db.getOne(seeds[3].tjnid, (error, data) => {
+        db.getOne("3", (error, data) => {
           var item = data[0]
           expect(error).to.equal(null);
           expect(item["storeName"]).to.equal(seeds[3]["storeName"]);
@@ -163,11 +164,53 @@ describe("- - - - - - - API Routes - - - - - -", function() {
 
 
   it('be able to get all via axios get call too /items)', function(done) { 
-      
-            
-
-
-      done()
+        axios.get("http://localhost:3002/items")
+        .catch(e => {
+          expect(e).to.equal(null)
+          console.log(e)
+          done()
+        })
+        .then(results => {
+          expect(results.data.length).to.equal(100)
+          expect(results.data[5].title).to.equal(seeds[5].title)
+          expect(results.data[99].tjnid).to.equal("tjn-id99")
+          done()
+        })
       })
+
+      it('be able to get all via axios get call too find a single item by id)', function(done) { 
+        axios.get("http://localhost:3002/items/27")
+        .catch(e => {
+          expect(e).to.equal(null)
+          console.log(e)
+          done()
+        })
+        .then(results => {
+          expect(Object.keys(results.data[0]).length).to.equal(16)
+          expect(results.data[0].title).to.equal(seeds[27].title)
+          expect(results.data[0].tjnid).to.equal("tjn-id27")
+          done()
+        })
+      })
+
+      //this last test is gonna take some work and i think is unessasary. My item titles have multiple spaces in them words and chars. Also this function is the same as the one above and I did witness it working while passing in non-spaced strings that I manually added to robomongo 3t after the fact. I woiuldnt have written this test unless HR said we had to, but I also think they made that rule  because most products have one name? 
+
+      // it('be able to get all via axios get call too find a single item by name)', function(done) { 
+       
+      //   axios.get(`http://localhost:3002/items/27${name}`)
+      //   .catch(e => {
+      //     expect(e).to.equal(null)
+      //     console.log(e)
+      //     done()
+      //   })
+      //   .then(results => {
+      //     expect(Object.keys(results.data[0]).length).to.equal(16)
+      //     expect(results.data[0].title).to.equal(name)
+      //     expect(results.data[0].price).to.equal(seeds[44].price)
+      //     expect(results.data[0].tjnid).to.equal("tjn-id44")
+      //     done()
+        // })
+      // })
+
 
 })
