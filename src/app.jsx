@@ -7,6 +7,13 @@ import {Rating} from './rating.jsx'
 import {Shipping} from './shippingAndReturns.jsx'
 import {Header} from './productHeader.jsx'
 
+
+
+const appStyleTJN = {
+  fontFamily: `"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif`,
+}
+
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -30,6 +37,7 @@ class App extends React.Component {
         tjnid: "tjn-id8"
       }
       ],
+ 
     }
     
     this.clickHandle = this.clickHandle.bind(this)
@@ -63,12 +71,13 @@ componentDidMount(){
 
   render() {
     return (
-      <div>
-      <Rating storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
+      <div style={appStyleTJN}>
+
+      <Rating style={appStyleTJN} storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
       <Options  id={this.state.items[0]["tjnid"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
       <hr className="tjn-hr"></hr>
-      <Deets description={this.state.items[0]["description"]} /> 
+      <Deets  description={this.state.items[0]["description"]} /> 
 
       <hr className="tjn-hr"></hr>
       <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  eta={this.state.items[0]["eta"]} /> 
@@ -78,4 +87,7 @@ componentDidMount(){
   }
 }
 
-ReactDOM.render(<App className="tjn-app"/>, document.getElementById("tjn-root"))
+ReactDOM.render(<App  className="tjn-app"/>, document.getElementById("tjn-root"))
+
+
+

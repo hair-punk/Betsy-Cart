@@ -5,6 +5,9 @@ import {Quantity} from "./quantity.jsx"
 var optionHead = ""
 
 
+
+
+
 export const Options = (props) => {
   if(props.options[0] !== "Select your size") {
     optionHead = "Color"

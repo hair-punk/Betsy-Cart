@@ -34,10 +34,10 @@
 
 
  /* - - - - - - - -  font stuff  - - - - - - -  - - - - - -  */
- *{
+ /* *{
   font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
   text-rendering: optimizeLegibility;
- }
+ } */
 .tjn-mini-header {
   font-family: "Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif;
   text-rendering: optimizeLegibility;
@@ -107,9 +107,9 @@
   opacity: .97;
   
 }
-.tjn-deet-p1{
- padding-bottom: 10px;
-}
+  .tjn-deet-p1{
+   padding-bottom: 10px;
+  }
 .tjn-deet-p1{
   padding-bottom: 15px;
  }
@@ -180,10 +180,15 @@
 ≈
 .tjn-optionHead, .tjn-quantityHead{
   color: #444444;
-  font-size:14px;
+  font-size:16px;
+  font-weight: 600;
   margin-bottom: 3px;
   font-weight: 500;
   
+}
+
+.tjn-optionHead {
+  margin-bottom: 3px;
 }
 
 .tjn-options-drop-down, .tjn-quantity-drop-down {
