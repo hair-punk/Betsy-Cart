@@ -55,9 +55,17 @@ class App extends React.Component {
 		};
 
 		this.clickHandle = this.clickHandle.bind(this);
+		this.hoverHandle = this.hoverHandle.bind(this);
 	}
 	clickHandle() {
 		console.log('CLICK BABY!');
+	}
+
+	hoverHandle() {
+		alert('nice hovering');
+		console.log('------------------------------------');
+		console.log('HOVERCRAFT');
+		console.log('------------------------------------');
 	}
 	componentDidMount() {
 		axios
@@ -104,6 +112,7 @@ class App extends React.Component {
 					options={this.state.items[0]['buyoptions']}
 					peoplewantthis={this.state.items[0]['peopleWantThis']}
 					cartclick={this.clickHandle}
+					carthover={this.hoverHandle}
 				/>
 				<hr style={hrStyle} />
 				<Deets description={this.state.items[0]['description']} />
