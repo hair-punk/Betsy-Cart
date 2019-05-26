@@ -26,18 +26,18 @@ const marginAddToFrom = function (vh) {
 }
 
 export const Shipping =(props) => (
-    <div className="tjn-shipping tjn-flex tjn-flex-col tjn-flex-center tjn-align-start">
-      <div style={miniHeaderStyle}  className="tjn-align-start tjn-mini-header"> Shipping & Returns</div>
-      <div className="tjn-shippingInfo">
-          <div  style={miniHeader2} className="tjn-mini-header2"> Get it soon. Estimated delivery: {props.eta[0].replace("-", " ")}-{props.eta[1].slice(-2)} </div>
-          <div style={needItSoon} className="tjn-needItSoon">Need it sooner? Upgrade shipping in checkout!</div>
-          <div className="tjn-toFromShipping"> 
-            <div style={marginAddToFrom(1)} className="tjn-from">From {props.location.split(", ")[1]}
+    <div >
+      <div style={miniHeaderStyle}  > Shipping & Returns</div>
+      <div >
+          <div  style={miniHeader2} > Get it soon. Estimated delivery: {props.eta[0].replace("-", " ")}-{props.eta[1].slice(-2)} </div>
+          <div style={needItSoon} >Need it sooner? Upgrade shipping in checkout!</div>
+          <div > 
+            <div style={marginAddToFrom(1)} >From {props.location.split(", ")[1]}
             </div>
-            <div style={marginAddToFrom(2)} className="tjn-to"> {props.shipprice}  to <u>United States, 84103-1506</u></div>
+            <div style={marginAddToFrom(2)} > {props.shipprice}  to <u>United States, 84103-1506</u></div>
             </div>
           </div>
-          <div   style={miniHeader2}  className="tjn-mini-header2">No returns or exchanges</div>
+          <div   style={miniHeader2}  >No returns or exchanges</div>
     </div>
   )
 

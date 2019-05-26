@@ -71,25 +71,25 @@ export const Options = (props) => {
   }
 
 return(
-    <div className="tjn-flex tjn-flex-col tjn-flex-around tjn-optionsParent">
+    <div >
         
-        <div style={dropDownHeadStyle} className="tjn-quantityHead">Quantity</div>
-        <select style={dropDownStyle} className="tjn-quantity-drop-down">
+        <div style={dropDownHeadStyle}>Quantity</div>
+        <select style={dropDownStyle}>
           {quantArray.map((elem) => <Quantity  key={elem+props.id} quantity={elem} />
           )}
         </select>
 
 
-        <div style={dropDownHeadStyle} className="tjn-optionHead">{optionHead}</div>
-        <select style={dropDownStyle} className="tjn-options-drop-down">
+        <div style={dropDownHeadStyle}>{optionHead}</div>
+        <select style={dropDownStyle}>
           {props.options.map((elem) => <Option   key={elem+props.id} option={elem} />
           )}
           {/* cursor={'&#8671;'} */}
          
         </select>
     
-      <button style={buyItStyle} className="tjn-buyIt">Buy it now</button>
-      <button style={addToCartStyle} className="tjn-addToKart">Add to cart</button>
+      <button style={buyItStyle}>Buy it now</button>
+      <button style={addToCartStyle}>Add to cart</button>
       <div>
         <PeopleWantThis want={props.peoplewantthis} />
       </div>

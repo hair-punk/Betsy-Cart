@@ -73,10 +73,10 @@ const messageSellerStyle = {
 
 export const Header = function(props) {
     return  (
-    <div style={mainStyle} className="tjn-flex tjn-flex-col">
-      <div  style={titleStyle} className="tjn-itemTitle tjn-align-start">{props.itemtitle}</div>
-      <div style={itemPriceStyle} className="tjn-flex tjn-flex-row tjn-flex-between tjn-price-and-message">
-        <div className="tjn-itemPrice">{props.itemprice}+ </div> <button style={messageSellerStyle} className="tjn-sellerButton">Message Seller</button>
+    <div style={mainStyle}>
+      <div  style={titleStyle}>{props.itemtitle}</div>
+      <div style={itemPriceStyle}>
+        <div>{props.itemprice}+ </div> <button style={messageSellerStyle}>Message Seller</button>
       </div>
     </div>
   )

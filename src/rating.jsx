@@ -24,11 +24,11 @@ import {Stars} from './stars.jsx';
   }
   
     return  (
-    <div style={ratingBarDiv} className="tjn-flex tjn-flex-row tjn-rating-bar">
-    <a  style={rating} className="tjn-rating tjn-storename" href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> 
-    <div className="tjn-rating tjn-avgstars"><Stars  starAvg={props.stars}/>
+    <div style={ratingBarDiv}>
+    <a  style={rating} href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">{props.storeName}</a> 
+    <div><Stars  starAvg={props.stars}/>
     </div>
-    <div style={numStars} className="tjn-rating tjn-numstars">({props.numStars})</div>
+    <div style={numStars}>({props.numStars})</div>
     </div>
   )
 }
