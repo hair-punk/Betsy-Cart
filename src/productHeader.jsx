@@ -1,46 +1,42 @@
-
-
 import React from 'react';
 
-
 const mainStyle = {
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "flex-start",
-}
+	display: 'flex',
+	flexDirection: 'column',
+	alignItems: 'flex-start',
+};
 const titleStyle = {
-  alignSelf: "flex-start",
-  fontSize: "20px",
-  marginBottom: "10px",
-  color: "#333333",
-  fontFamily: "'Guardian-EgypTT',Arial,sans-serif",
-}
+	alignSelf: 'flex-start',
+	fontSize: '20px',
+	marginBottom: '10px',
+	color: '#333333',
+	fontFamily: "'Guardian-EgypTT',Arial,sans-serif",
+};
 const itemPriceStyle = {
-  fontSize: "18px",
-  fontWeight: "700",
-  color: "#22222",
-}
+	fontSize: '18px',
+	fontWeight: '700',
+	color: '#22222',
+};
 
 const messageSellerStyle = {
-  color: "#22222",
-  textDecoration: "none",
-  marginBottom: "12px",
-  height: `28px`,
-  padding: `4px 12px`,
-  backgroundColor: "#FFFFFF",
-  borderColor:  "rgba(0,0,0,0.15)",
-  borderRaidus: "3px",
-  borderStyle: "solid",
-  borderWidth: "1px",
-  fontFamily: `"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif`,
-  lineHeight: "1.4",
-  textAlign: "center",
-  display: "block",
-  boxSizing: "border-box",
-  fontSize: "12px",
-  fontWeight: "bold"
-} 
-
+	color: '#22222',
+	textDecoration: 'none',
+	marginBottom: '12px',
+	height: `28px`,
+	padding: `4px 12px`,
+	backgroundColor: '#FFFFFF',
+	borderColor: 'rgba(0,0,0,0.15)',
+	borderRaidus: '3px',
+	borderStyle: 'solid',
+	borderWidth: '1px',
+	fontFamily: `"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif`,
+	lineHeight: '1.4',
+	textAlign: 'center',
+	display: 'block',
+	boxSizing: 'border-box',
+	fontSize: '12px',
+	fontWeight: 'bold',
+};
 
 // .tjn-sellerButton {
 //   color: #222222;
@@ -69,18 +65,16 @@ const messageSellerStyle = {
 //   border-color: rgba(0, 0, 0, 0.521);
 // }
 
-
 export const Header = function(props) {
-    return  (
-    <div style={mainStyle}>
-      <div  style={titleStyle}>{props.itemtitle}</div>
-      <div style={itemPriceStyle}>
-        <div>{props.itemprice}+ </div> <button style={messageSellerStyle}>Message Seller</button>
-      </div>
-    </div>
-  )
-}
- //
-
+	return (
+		<div style={mainStyle}>
+			<div style={titleStyle}>{props.itemtitle}</div>
+			<div style={itemPriceStyle}>
+				<div>{props.itemprice}+ </div> <button style={messageSellerStyle}>Message Seller</button>
+			</div>
+		</div>
+	);
+};
+//
 
 //add in the you save $etc

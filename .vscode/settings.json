@@ -1,0 +1,15 @@
+{
+	"prettier.alignObjectProperties": true,
+	"prettier.arrayExpand": true,
+	"prettier.breakBeforeElse": true,
+	"prettier.flattenTernaries": true,
+	"prettier.javascript-Enable": true,
+	"prettier.json-Enable": true,
+	"prettier.jsxSingleQuote": true,
+	"prettier.spaceBeforeFunctionParen": true,
+	"prettier.tabWidth": 2,
+	"prettier.trailingComma": "all",
+	"editor.formatOnSave": true,
+	"eslint.autoFixOnSave": true,
+
+}
