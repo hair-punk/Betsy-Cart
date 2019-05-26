@@ -3,7 +3,7 @@ const ReactDOM = require('react-dom');
 const axios = require('axios')
 import {Deets} from './itemDeets.jsx'
 import {Options} from './optionsAndCart.jsx'
-import {Rating} from './rating.jsx'
+import {Rating} from './rating.jsx' // styled 
 import {Shipping} from './shippingAndReturns.jsx'
 import {Header} from './productHeader.jsx'
 
@@ -73,7 +73,7 @@ componentDidMount(){
     return (
       <div style={appStyleTJN}>
 
-      <Rating style={appStyleTJN} storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} /> 
+      <Rating style={appStyleTJN} storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} />  
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
       <Options  id={this.state.items[0]["tjnid"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
       <hr className="tjn-hr"></hr>
