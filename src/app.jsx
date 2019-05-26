@@ -13,6 +13,16 @@ const appStyleTJN = {
   fontFamily: `"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif`,
 }
 
+const hrStyle = {
+marginBottom: '21px',
+marginTop: '21px',
+width: '97%',
+color: '#E1E3DF',
+fontSize: '10px',
+lineHeight: '1.4',
+fontWeight: '200',
+opacity: '.3',
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -46,7 +56,7 @@ clickHandle(){
   console.log("CLICK BABY!")
 }
 componentDidMount(){
-    axios.get("/items/5")
+    axios.get("/items/1")
     .then(results => {
       this.setState({
         items: results.data
@@ -76,12 +86,12 @@ componentDidMount(){
       <Rating style={appStyleTJN} storeName={this.state.items[0]["storeName"]} stars={this.state.items[0]["stars"]} numStars={this.state.items[0].numStars} />  
        <Header itemtitle={this.state.items[0]["title"]} itemprice={this.state.items[0]["price"]} messageseller={this.clickHandle} />
       <Options  id={this.state.items[0]["tjnid"]} quantity={this.state.items[0]["quantity"]} options={this.state.items[0]["buyoptions"]} peoplewantthis={this.state.items[0]["peopleWantThis"]} cartclick={this.clickHandle} /> 
-      <hr className="tjn-hr"></hr>
+      <hr  style={hrStyle} className="tjn-hr"></hr>
       <Deets  description={this.state.items[0]["description"]} /> 
 
-      <hr className="tjn-hr"></hr>
+      <hr style={hrStyle}  className="tjn-hr"></hr>
       <Shipping shipprice={this.state.items[0]["shipprice"]} location={this.state.items[0]["location"]}  eta={this.state.items[0]["eta"]} /> 
-      <hr className="tjn-hr"></hr>
+      <hr  style={hrStyle} className="tjn-hr"></hr>
       </div>
     )
   }
