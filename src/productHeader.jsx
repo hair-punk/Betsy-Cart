@@ -16,6 +16,11 @@ const itemPriceStyle = {
 	fontSize: '18px',
 	fontWeight: '700',
 	color: '#22222',
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'space-between',
+	alignItems: 'center',
+	width: '99%',
 };
 
 const messageSellerStyle = {
@@ -26,7 +31,7 @@ const messageSellerStyle = {
 	padding: `4px 12px`,
 	backgroundColor: '#FFFFFF',
 	borderColor: 'rgba(0,0,0,0.15)',
-	borderRaidus: '3px',
+	borderRadius: '3px',
 	borderStyle: 'solid',
 	borderWidth: '1px',
 	fontFamily: `"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif`,
