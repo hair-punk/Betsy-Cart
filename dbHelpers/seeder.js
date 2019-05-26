@@ -30,17 +30,17 @@ var seedMaker = function() {
 		n--;
 	}
 	//- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - realistic shipping price gen i need to learn regex
-	var price = faker.commerce.price(1, 12);
+	var price = faker.commerce.price(1, 12); // random price
 	price = '$' + price.slice(0, 2);
 	if (price.indexOf('.') === -1) {
 		price = price + '.';
 	}
-	price = price + `${rando100}`;
+	price = price + `${rando100}`; // adding cents
 	if (rando100 < 10) {
 		price = price + '0';
 	}
 
-	var storeName = faker.company.bsAdjective() + ' ' + faker.random.word() + ', LLC';
+	var storeName = faker.company.bsAdjective() + ' ' + faker.random.word() + ', LLC'; // you can remove the LLC if you'd like. That would be more accurate. I only added this because the names and pcitures will not allign since everything is gibberish. Etsy storenames do not have any indicator that they are a business other than the fact that they do not describe the product as specifically.
 	var splitSN = storeName.split(' ');
 	storeName = splitSN
 		.map(word => {
@@ -52,6 +52,7 @@ var seedMaker = function() {
 		.join(' ');
 
 	var title = function() {
+		// product name. In etsy there are a variety of lenghts of product names. Often longer ones are pretty much filled with adjectivies. This will spit out a relativly random amount of words in general.
 		var result =
 			faker.commerce.productAdjective() + ' ' + faker.commerce.productAdjective() + faker.commerce.product() + ' | ';
 
@@ -65,6 +66,7 @@ var seedMaker = function() {
 	};
 
 	var description = function() {
+		// simmilar to the product title above, this will generate a random amount of description setences / paragraphs within reason. The first half of this is the default always present things, the for loop is where the super random magic happens
 		var result = [
 			faker.lorem.sentence(randoStars + rando7 + rando3),
 			faker.lorem.sentence(rando7 + 4),
@@ -82,7 +84,7 @@ var seedMaker = function() {
 		}
 		return result;
 	};
-	//- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together
+	//- - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - -putting it all together - this is the object that will be elem  in the seeds array that ultiamtly will be fed into the database & then state.
 	var output = {
 		storeName: storeName,
 		title: title(),
@@ -123,7 +125,7 @@ for (let i = 0; i < 100; i++) {
 
 module.exports = seeds;
 
-// IF YOU WANTED TO DO THIS VIA ETSY API, I'VE Done the ground work for your below....
+// IF YOU WANTED TO DO THIS VIA ETSY API, I'VE Done the some of the ground work for your below....
 
 // const axios = require("Axios")
 // const keys = require("../config/keys.js")

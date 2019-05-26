@@ -81,7 +81,8 @@ const clear = callback => {
 };
 
 const getOne = (idOrName, callback) => {
-	var isName = idOrName.length < 3 ? false : true;
+	// takes  in either the raw index of the  mongoDB document (0, 1, 2, 22, 99 etc) or the name of the product and returns that item's documentr.
+	var isName = idOrName.slice(0, 1) < 3 ? false : true; // decides if the item is a product name or item ID. All of my product names . For this to work with a scalable database (like with a million entries that also contain names that are less than 5 or 6 letters, the programmer will have to change the above ternery to use regex looking for numbers. I think tha tis the only way when dealing with an unkown N of documents. I would do so, but I am on a plane right now with no interenet and this will work for FEC, LOL.
 
 	if (isName) {
 		var name = idOrName;

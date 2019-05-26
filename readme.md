@@ -6,4 +6,15 @@ Couple things to note:
 -Port is 3002
 -I imagine it should pipe into proxy servers easily. The one thing I anticipate being a potential issue is I set the elements width to be 99%. That is 99% of the container's width. You may need to up those to 100% depending on how you impelment this. You can change this throughout the CSS stylesheet.
 - to run tests, run ~npm run test
-    I do not have test watch on. It does not work.
+    I do not have test watch on. It does not work.. you must ctrl-c and type npm run test again to re-run.
+
+
+
+structure           
+var App = {
+	Rating: { stars: {} },
+	Header: {},
+	Options: { Quantity: {}, Option: {}, PeopleWantThis: {} },
+	Deets: { Deet: {} },
+	Shipping: {},
+};
