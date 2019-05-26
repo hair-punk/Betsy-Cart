@@ -35,7 +35,7 @@ class App extends React.Component {
         _id:"5ce3505e133ed98819ec9849",
         storeName:"granular Incredible fault-tolerant",
         title:"AwesomeComputer",
-        description:"Iste aut ratione voluptates consequatur. Quaerat consequuntur aut alias sunt in odio eveniet. Maxime ea omnis. Tempora omnis est est ab corrupti a corrupti. Qui minima rerum neque autem quos ipsa dicta. Aliquid animi voluptatum et excepturi quasi amet nemo. Et iste soluta qui animi ab odio nam. Dolore ad sit. Temporibus eos qui doloribus voluptatem quia consequatur. Dolor consequatur inventore et consequatur et consequuntur culpa. Esse enim ratione nam quisquam hic hic eveniet.",
+        description:["Iste aut ratione voluptates consequatur.", "Quaerat consequuntur aut alias sunt in odio eveniet. Maxime ea omnis.", "Tempora omnis est est ab corrupti a corrupti. Qui minima rerum neque autem quos ipsa dicta. Aliquid animi voluptatum et excepturi quasi amet nemo. Et iste soluta qui animi ab odio nam. Dolore ad sit.", "Temporibus eos qui doloribus voluptatem quia consequatur.", "Dolor consequatur inventore et consequatur et consequuntur culpa.", "Esse enim ratione nam quisquam hic hic eveniet."],
         url:"https://reymundo.info",
         price:"$95.72",
         quantity:18,

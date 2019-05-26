@@ -1,4 +1,7 @@
 import React from 'react';
+import {Deet} from './deet.jsx'
+
+
 const deetsStyleTJN = {
   alignItems: "flex-start",
   height: "auto",
@@ -13,36 +16,21 @@ const miniHeaderStyle  = {
   fontWeight: '550',
   paddingBottom: '6px'
 }
-const deetP = function(num = Math.floor(Math.random() * 35) ) {
+// const deetP = function(num = Math.floor(Math.random() * 35) ) {
   
-    return {
-    fontSize: `14px`,
-    fontWeight: `400`,
-    lineHeight: `1.6`,
-    opacity: `.97`,
-    paddingBottom: `${num}px`,
-    }
-}
+//     return {
+//     fontSize: `14px`,
+//     fontWeight: `400`,
+//     lineHeight: `1.6`,
+//     opacity: `.97`,
+//     paddingBottom: `${num}px`,
+//     }
+// }
 export  const Deets = (props) =>  (
   
     <div style={deetsStyleTJN}>
     <div style={miniHeaderStyle}  >Item details</div>
-      <div style={deetP()} >{props.description[0]}</div>
-      <div style={deetP()}  >{props.description[1]}</div>
-      <div style={deetP()}>{props.description[2]}</div>
-      <div style={deetP()}>{props.description[3]}</div>
-      <div style={deetP()}>{props.description[4]}</div>
-      <div style={deetP()}>{props.description[5]}</div>
-      <div style={deetP()}>{props.description[6]}</div>
-      <div style={deetP()}>{props.description[7]}</div>
-
-      <div style={deetP(0)}>{props.description[8]}</div>
-      <div style={deetP(0)}>{props.description[9]}</div>
-      <div style={deetP(0)}>{props.description[10]}</div>
-      <div style={deetP(0)}>{props.description[11]}</div>
-      <div style={deetP(0)}>{props.description[12]}</div>
-      <div style={deetP(0)}>{props.description[13]}</div>
-      <div style={deetP(0)}>{props.description[14]}</div>
+      <Deet descriptionArr={props.description} />
     </div>
   )
 

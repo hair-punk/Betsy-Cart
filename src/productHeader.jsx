@@ -1,8 +1,7 @@
 
 
 import React from 'react';
-import { inherits } from 'util';
-import { Z_BLOCK } from 'zlib';
+
 
 const mainStyle = {
   display: "flex",
