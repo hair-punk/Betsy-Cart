@@ -32,7 +32,7 @@ export class Options extends React.Component {
 					alignItems: `center`,
 					whiteSpace: `pre`,
 					textRendering: `auto`,
-					marginBottom: `12px`,
+					marginBottom: `12px`, // commit comment
 				},
 				dropDownStyleOpt: {
 					backgroundColor: `#ffffff`,

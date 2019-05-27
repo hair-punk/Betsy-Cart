@@ -29,7 +29,7 @@ app.get('/items/:id', function(req, res) {
 		if (err || data.length === 0) {
 			res.status(404).send('error, item not found');
 		}
-		res.send(data).status(200);
+		res.status(200).send(data);
 	});
 });
 
