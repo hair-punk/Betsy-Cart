@@ -57,28 +57,17 @@ class App extends React.Component {
 		this.clickHandle = this.clickHandle.bind(this);
 		this.hoverHandle = this.hoverHandle.bind(this);
 	}
-	clickHandle() {
-		console.log('CLICK BABY!');
-	}
+	clickHandle() {}
 
-	hoverHandle() {
-		alert('nice hovering');
-		console.log('------------------------------------');
-		console.log('HOVERCRAFT');
-		console.log('------------------------------------');
-	}
+	hoverHandle() {}
+
 	componentDidMount() {
 		axios
-			.get('/items/1')
+			.get('/items/13')
 			.then(results => {
 				this.setState({
 					items: results.data,
 				});
-			})
-			.then(idk => {
-				console.log('------------------------------------');
-				console.log(JSON.stringify(this.state.items[0]));
-				console.log('------------------------------------');
 			})
 			.catch(err => {
 				if (err) {
