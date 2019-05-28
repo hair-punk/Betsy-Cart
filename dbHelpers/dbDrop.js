@@ -1,4 +1,5 @@
-const db = require("./db.js")
+const db = require('./db.js');
 
+db.dropCollection();
 
-db.dropCollection()
+// this is simply for an npm Script

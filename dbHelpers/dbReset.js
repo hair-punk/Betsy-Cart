@@ -1,7 +1,9 @@
 const db = require('./db.js');
 const seeds = require('./seeder.js');
 
-// this is simply for an npm Script. The programmer will not need to use this though. ~npm run reset     is all you need to work with the DB seeder. Drop and seed are kinda depreciated, lol.
+db.dropCollection();
+
+// This is simply for a npm script - this is the go-to  database script. The programmer should not need to use npm run drop or npm run seed. This does both.
 
 db.create(seeds, (err, seeds) => {
 	if (err) {
@@ -9,4 +11,5 @@ db.create(seeds, (err, seeds) => {
 	} else {
 		console.log('Seeded the database - - - - - - - - !!');
 	}
+	return;
 });
