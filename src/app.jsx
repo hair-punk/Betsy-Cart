@@ -55,22 +55,19 @@ class App extends React.Component {
 		};
 
 		this.clickHandle = this.clickHandle.bind(this);
+		this.hoverHandle = this.hoverHandle.bind(this);
 	}
-	clickHandle() {
-		console.log('CLICK BABY!');
-	}
+	clickHandle() {}
+
+	hoverHandle() {}
+
 	componentDidMount() {
 		axios
-			.get('/items/1')
+			.get('/items/13')
 			.then(results => {
 				this.setState({
 					items: results.data,
 				});
-			})
-			.then(idk => {
-				console.log('------------------------------------');
-				console.log(JSON.stringify(this.state.items[0]));
-				console.log('------------------------------------');
 			})
 			.catch(err => {
 				if (err) {
@@ -104,6 +101,7 @@ class App extends React.Component {
 					options={this.state.items[0]['buyoptions']}
 					peoplewantthis={this.state.items[0]['peopleWantThis']}
 					cartclick={this.clickHandle}
+					carthover={this.hoverHandle}
 				/>
 				<hr style={hrStyle} />
 				<Deets description={this.state.items[0]['description']} />
