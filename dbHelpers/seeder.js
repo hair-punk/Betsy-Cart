@@ -50,7 +50,7 @@ var seedMaker = function() {
 		price = price + '0';
 	}
 
-	var storeName = faker.company.bsAdjective() + ' ' + faker.random.word() + ', LLC'; // you can remove the LLC if you'd like. That would be more accurate. I only added this because the names and pcitures will not allign since everything is gibberish. Etsy storenames do not have any indicator that they are a business other than the fact that they do not describe the product as specifically.
+	var storeName = faker.company.bsAdjective() + ' ' + faker.random.word(); // you can remove the LLC if you'd like. That would be more accurate. I only added this because the names and pcitures will not allign since everything is gibberish. Etsy storenames do not have any indicator that they are a business other than the fact that they do not describe the product as specifically.
 	var splitSN = storeName.split(' ');
 	storeName = splitSN
 		.map(word => {
@@ -60,6 +60,9 @@ var seedMaker = function() {
 			return newWord;
 		})
 		.join(' ');
+	if (storeName.length < 25) {
+		storeName += ', LLC';
+	}
 
 	var title = function() {
 		// product name. In etsy there are a variety of lenghts of product names. Often longer ones are pretty much filled with adjectivies. This will spit out a relativly random amount of words in general.
@@ -83,7 +86,7 @@ var seedMaker = function() {
 			faker.lorem.paragraph(rando3 + 1),
 			faker.lorem.sentence(rando3 * 4 + 4),
 			faker.lorem.sentence(rando3 * 8 + 5),
-			faker.lorem.paragraph(rando7),
+			faker.lorem.paragraph(rando7 + 1),
 		];
 
 		for (let i = 0; i <= 1 + rando100 / 10; i++) {

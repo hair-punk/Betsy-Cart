@@ -44,7 +44,7 @@ class App extends React.Component {
 					eta: ['May-30', 'May-31'],
 					_id: '5cedee0a0c13f948dd2e4e26',
 					storeName: 'Synergistic Upgradable, LLC',
-					title: 'Practical PracticalPizza |  Handcrafted Incredible Handmade ivory',
+					title: 'BrokenAPI-hipsterTapestry |  Handcrafted Incredible Handmade ivory',
 					url: 'http://josh.com',
 					price: '$207.57',
 					quantity: 19,

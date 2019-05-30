@@ -11,7 +11,7 @@ const bold = {
 
 export const PeopleWantThis = props => {
 	const Bold = parent => <Text style={{ fontWeight: 'bold' }}>{parent.children}</Text>;
-	if (props.want !== null && props.want.split(' ')[0] > 5) {
+	if (props.want !== null && props.want.split(' ')[0] > 3 * Math.floor(Math.random() * 3)) {
 		return (
 			<div style={peopleWantStyle}>
 				<img src="https://i.imgur.com/oaNvn0w.png" />
