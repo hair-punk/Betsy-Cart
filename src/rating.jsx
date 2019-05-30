@@ -2,10 +2,17 @@ import React from 'react';
 import { Stars } from './stars.jsx';
 
 export var Rating = function(props) {
+	const ratingBarContainer = {
+		display: 'flex',
+		flexDirection: 'row',
+		width: 'auto',
+		height: 'auto',
+	};
 	const numStars = {
 		textDecoration: 'none',
 		color: '#757575',
 		fontSize: '14px',
+		// paddingLeft: '1.2vw',
 	};
 	const ratingBarDiv = {
 		height: '18px',
@@ -13,27 +20,38 @@ export var Rating = function(props) {
 		marginBottom: '14px',
 		display: 'flex',
 		flexDirection: 'row',
-		minWidth: '320px',
+		minWidth: '290px',
+		height: 'auto',
+		justifyContent: 'space-evenly',
+		alignSelf: 'flex-start',
+		marginLeft: '-.2.2vw',
 	};
-	const rating = {
+
+	const storeName = {
+		maxWidth: '210px',
 		textDecoration: 'none',
 		color: '#757575',
 		fontSize: '14px',
-		paddingRight: '1.2vw',
+		width: 'auto',
+	};
+	const starStyle = {
+		alignSelf: 'flex-start',
 	};
 
 	return (
-		<div style={ratingBarDiv}>
-			<a
-				style={rating}
-				href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848"
-			>
-				{props.storeName}
-			</a>
-			<div>
-				<Stars starAvg={props.stars} />
+		<div style={ratingBarContainer}>
+			<div style={ratingBarDiv}>
+				<a
+					style={storeName}
+					href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848"
+				>
+					{props.storeName}
+				</a>
+				<div>
+					<Stars style={starStyle} starAvg={props.stars} />
+				</div>
+				<div style={numStars}>({props.numStars})</div>
 			</div>
-			<div style={numStars}>({props.numStars})</div>
 		</div>
 	);
 };
