@@ -26,12 +26,12 @@ export var Rating = function(props) {
 		alignSelf: 'flex-start',
 		marginLeft: '-.2.2vw',
 	};
+
 	const storeName = {
+		maxWidth: '210px',
 		textDecoration: 'none',
 		color: '#757575',
 		fontSize: '14px',
-		// paddingRight: '1.2vw',
-		maxWidth: '210px',
 		width: 'auto',
 	};
 	const starStyle = {
