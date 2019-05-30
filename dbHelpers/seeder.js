@@ -13,6 +13,13 @@ var seedMaker = function() {
 	var randoStars = 0.5 + Math.floor(Math.random() * 10) / 2;
 	var even = rando7 % 2 === 0;
 	//- - - - - - - - - - - - - - -  - - - - - - - - - - - - -  - - - - - - - Product choices (colors or sizes)
+	const colorMaker = () => {
+		var color = faker.commerce.color();
+		var split = color.split('');
+		var letter = split[0].toUpperCase();
+		color = letter + split.slice(1, split.length).join('');
+		return color;
+	};
 	var buyOptions = {
 		size: ['Select your size', 'xSmall', 'Small', 'Medium', 'Large', 'xLarge'],
 		color: ['Select a color'],
@@ -20,12 +27,15 @@ var seedMaker = function() {
 	var n = rando7;
 	while (n) {
 		if (even) {
-			var color = faker.commerce.color();
-			var split = color.split('');
-			var letter = split[0].toUpperCase();
-			color = letter + split.slice(1, split.length).join('');
+			var length = buyOptions.color.length;
+			var lengthPlus1 = length + 1;
 
-			buyOptions.color.push(color); //this while loop creates a random amount of color options between 1-7 when rando is even (so just giving the user either size options or color somewhat randomly but roughly 50% of thetime at scale)
+			while (buyOptions.color.length !== lengthPlus1) {
+				var color = colorMaker();
+				if (buyOptions.color.indexOf(color) === -1) {
+					buyOptions.color.push(color);
+				}
+			} //this while loop creates a random amount of color options between 1-7 when rando is even (so just giving the user either size options or color somewhat randomly but roughly 50% of thetime at scale)
 		}
 		n--;
 	}
@@ -68,9 +78,9 @@ var seedMaker = function() {
 	var description = function() {
 		// simmilar to the product title above, this will generate a random amount of description setences / paragraphs within reason. The first half of this is the default always present things, the for loop is where the super random magic happens
 		var result = [
-			faker.lorem.sentence(randoStars + rando7 + rando3),
+			faker.lorem.sentence(randoStars + rando7 + rando3 + 1),
 			faker.lorem.sentence(rando7 + 4),
-			faker.lorem.paragraph(rando3),
+			faker.lorem.paragraph(rando3 + 1),
 			faker.lorem.sentence(rando3 * 4 + 4),
 			faker.lorem.sentence(rando3 * 8 + 5),
 			faker.lorem.paragraph(rando7),

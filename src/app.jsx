@@ -28,28 +28,33 @@ class App extends React.Component {
 		this.state = {
 			items: [
 				{
-					buyoptions: ['Select an option', 'fuchsia', 'lime', 'purple', 'maroon'],
-					eta: ['May-22', 'May-25'],
-					_id: '5ce3505e133ed98819ec9849',
-					storeName: 'granular Incredible fault-tolerant',
-					title: 'AwesomeComputer',
 					description: [
-						'Iste aut ratione voluptates consequatur.',
-						'Quaerat consequuntur aut alias sunt in odio eveniet. Maxime ea omnis.',
-						'Tempora omnis est est ab corrupti a corrupti. Qui minima rerum neque autem quos ipsa dicta. Aliquid animi voluptatum et excepturi quasi amet nemo. Et iste soluta qui animi ab odio nam. Dolore ad sit.',
-						'Temporibus eos qui doloribus voluptatem quia consequatur.',
-						'Dolor consequatur inventore et consequatur et consequuntur culpa.',
-						'Esse enim ratione nam quisquam hic hic eveniet.',
+						'Libero accusantium illo ut sit cumque.',
+						'Corrupti quod voluptatem autem quidem officiis.',
+						'Odit est ipsa officia sit illo labore labore. Repellat eos doloremque amet ut quo nulla eligendi ullam.',
+						'Voluptatibus ut nisi voluptates.',
+						'Quia fuga quisquam aliquam nihil.',
+						'Soluta consequatur impedit hic. Dolore at voluptas. Magnam ullam autem sint labore magnam nihil omnis laudantium.',
+
+						'Temporibus quia.',
+						'Corporis voluptatum officia dolor.',
+						'Aut itaque sit aut exercitationem sint vero. Unde ipsa laboriosam et ipsum qui. Mollitia molestias provident error iusto commodi.',
 					],
-					url: 'https://reymundo.info',
-					price: '$95.72',
-					quantity: 18,
-					shipprice: '$3.18',
-					location: 'West Hillary, Ohio',
-					stars: 4,
-					numStars: 18,
-					peopleWantThis: '80 people want to buy this stupid peice of trash',
-					tjnid: 'tjn-id8',
+					buyoptions: ['Select a color', 'Orange', 'Yellow'],
+					eta: ['May-30', 'May-31'],
+					_id: '5cedee0a0c13f948dd2e4e26',
+					storeName: 'Synergistic Upgradable, LLC',
+					title: 'Practical PracticalPizza |  Handcrafted Incredible Handmade ivory',
+					url: 'http://josh.com',
+					price: '$207.57',
+					quantity: 19,
+					shipprice: '$6.19',
+					location: 'East Donavon, California',
+					stars: 3.5,
+					numStars: 66,
+					peopleWantThis: null,
+					tjnid: 'tjn-id299',
+					__v: 0,
 				},
 			],
 		};
@@ -57,17 +62,16 @@ class App extends React.Component {
 		this.clickHandle = this.clickHandle.bind(this);
 		this.hoverHandle = this.hoverHandle.bind(this);
 	}
-	clickHandle() {}
-
-	hoverHandle() {}
-
-	componentDidMount() {
+	clickHandle() {
+		var random = Math.floor(Math.random() * 99).toString();
 		axios
-			.get('/items/13')
+			.get('http://localhost:3002/items/' + random)
+			// fetch('/items/19', {})
 			.then(results => {
 				this.setState({
 					items: results.data,
 				});
+				console.log(JSON.stringify(results.data));
 			})
 			.catch(err => {
 				if (err) {
@@ -78,7 +82,29 @@ class App extends React.Component {
 					console.log('------------------------------------');
 				}
 			});
-		return;
+	}
+
+	hoverHandle() {}
+
+	componentDidMount() {
+		axios
+			.get('http://localhost:3002/items/2')
+			// fetch('/items/19', {})
+			.then(results => {
+				this.setState({
+					items: results.data,
+				});
+				console.log(JSON.stringify(results.data));
+			})
+			.catch(err => {
+				if (err) {
+					console.log('------------------------------------');
+					console.log('err in app.jsx');
+					console.log(err);
+					console.log('err', err);
+					console.log('------------------------------------');
+				}
+			});
 	}
 
 	render() {
@@ -93,14 +119,13 @@ class App extends React.Component {
 				<Header
 					itemtitle={this.state.items[0]['title']}
 					itemprice={this.state.items[0]['price']}
-					messageseller={this.clickHandle}
+					randomItemClick={this.clickHandle}
 				/>
 				<Options
 					id={this.state.items[0]['tjnid']}
 					quantity={this.state.items[0]['quantity']}
 					options={this.state.items[0]['buyoptions']}
 					peoplewantthis={this.state.items[0]['peopleWantThis']}
-					cartclick={this.clickHandle}
 					carthover={this.hoverHandle}
 				/>
 				<hr style={hrStyle} />

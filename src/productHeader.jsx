@@ -75,7 +75,8 @@ export const Header = function(props) {
 		<div style={mainStyle}>
 			<div style={titleStyle}>{props.itemtitle}</div>
 			<div style={itemPriceStyle}>
-				<div>{props.itemprice}+ </div> <button style={messageSellerStyle}>Message Seller</button>
+				<div onClick={props.randomItemClick}>{props.itemprice}+ </div>{' '}
+				<button style={messageSellerStyle}>Message Seller</button>
 			</div>
 		</div>
 	);

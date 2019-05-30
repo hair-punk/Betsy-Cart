@@ -232,7 +232,7 @@ export class Options extends React.Component {
 					onMouseOut={this.activeHoverExit}
 					style={this.state.styles.dropDownStyleQ}
 				>
-					{quantArray.map(elem => <Quantity key={elem + this.props.id} quantity={elem} />)}
+					{quantArray.map(elem => <Quantity uid={elem + this.props.id} quantity={elem} />)}
 				</select>
 
 				<div style={this.state.styles.dropDownHeadStyle}>{optionHead}</div>
@@ -242,7 +242,7 @@ export class Options extends React.Component {
 					onMouseOver={this.activeHoverChange}
 					onMouseOut={this.activeHoverExit}
 				>
-					{this.props.options.map(elem => <Option key={elem + this.props.id} option={elem} />)}
+					{this.props.options.map(elem => <Option uid={elem + this.props.id} option={elem} />)}
 					{/* cursor={'&#8671;'} */}
 				</select>
 
