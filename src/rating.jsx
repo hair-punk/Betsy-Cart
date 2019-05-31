@@ -7,6 +7,9 @@ export var Rating = function(props) {
 		flexDirection: 'row',
 		width: 'auto',
 		height: 'auto',
+
+		alignItems: 'center',
+		alignSelf: 'flex-start',
 	};
 	const numStars = {
 		textDecoration: 'none',
@@ -16,16 +19,18 @@ export var Rating = function(props) {
 	};
 	const ratingBarDiv = {
 		height: '18px',
-		alignItems: 'center',
+		alignSelf: 'flex-start',
+		// alignItems: 'center',
+		alignSelf: 'flex-start',
 		marginBottom: '14px',
 		display: 'flex',
 		flexDirection: 'row',
 		minWidth: '290px',
 		height: 'auto',
-		justifyContent: 'space-evenly',
-		alignSelf: 'flex-start',
-		marginLeft: '-.2.2vw',
+		justifyContent: 'space-between',
 	};
+	// alignSelf: 'flex-start',
+	// marginLeft: '-.2.2vw',
 
 	const storeName = {
 		maxWidth: '210px',
