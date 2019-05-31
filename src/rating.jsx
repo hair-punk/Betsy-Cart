@@ -1,6 +1,8 @@
 import React from 'react';
 import { Stars } from './stars.jsx';
 
+const stars = '★★★★★☆☆☆☆☆'
+
 export var Rating = function(props) {
 	const ratingBarContainer = {
 		display: 'flex',

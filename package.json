@@ -9,7 +9,8 @@
 		"build": "webpack  -d --watch",
 		"seed": "node dbHelpers/dbSeed.js",
 		"reset": "node dbHelpers/dbReset.js --watch",
-		"drop": "node dbHelpers/dbDrop.js"
+		"drop": "node dbHelpers/dbDrop.js",
+		"deploy": "node aws/awsConfig.js"
 	},
 	"repository": {
 		"type": "git",
@@ -22,6 +23,7 @@
 	},
 	"homepage": "https://github.com/fec-team-2/kart-and-info#readme",
 	"dependencies": {
+		"aws-s3": "^2.0.5",
 		"body-parser": "^1.19.0",
 		"express": "^4.16.4",
 		"mongoose": "^5.5.8",
@@ -31,6 +33,7 @@
 		"request": "^2.88.0"
 	},
 	"devDependencies": {
+		"aws-sdk": "^2.466.0",
 		"axios": "^0.18.0",
 		"babel-core": "^6.23.1",
 		"babel-loader": "^6.3.2",
