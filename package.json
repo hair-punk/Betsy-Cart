@@ -2,10 +2,10 @@
 	"name": "kart-and-info",
 	"version": "1.0.0",
 	"description": "This is a test to see if I can merge",
-	"main": "server/server.js",
+	"main": "server.js",
 	"scripts": {
 		"test": "mocha test/test.js",
-		"start": "nodemon server.js",
+		"start": "node server.js",
 		"build": "webpack  -d --watch",
 		"seed": "node dbHelpers/dbSeed.js",
 		"reset": "node dbHelpers/dbReset.js --watch",
