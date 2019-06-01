@@ -1,6 +1,7 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const axios = require('axios');
+const { ipKey } = require('../config/aws.js');
 import { Deets } from './itemDeets.jsx';
 import { Options } from './optionsAndCart.jsx';
 import { Rating } from './rating.jsx'; // styled
@@ -57,6 +58,8 @@ class App extends React.Component {
 					__v: 0,
 				},
 			],
+			userCountryName: 'WonkaVille',
+			userZipCode: '55555',
 		};
 
 		this.clickHandle = this.clickHandle.bind(this);
@@ -71,7 +74,8 @@ class App extends React.Component {
 				this.setState({
 					items: results.data,
 				});
-				console.log(JSON.stringify(results.data));
+				console.log('updated items/cart from db');
+				// console.log(JSON.stringify(results.data));
 			})
 			.catch(err => {
 				if (err) {
@@ -94,7 +98,8 @@ class App extends React.Component {
 				this.setState({
 					items: results.data,
 				});
-				console.log(JSON.stringify(results.data));
+				console.log('updated item from db');
+				// console.log(JSON.stringify(results.data));
 			})
 			.catch(err => {
 				if (err) {
@@ -104,6 +109,21 @@ class App extends React.Component {
 					console.log('err', err);
 					console.log('------------------------------------');
 				}
+			});
+		fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
+			.then(results => results.json())
+			.then(jsonResults => {
+				console.log('- - - - - requested your IPaddress to get geolcation');
+				// console.log(jsonResults.postal);
+				this.setState({
+					userCountryName: jsonResults.country_name,
+					userZipCode: jsonResults.postal,
+				});
+			})
+			.catch(e => {
+				console.log('@-!!!!!!!!!------------------------@');
+				console.log(e);
+				console.log('@------------!!!!!!!!!!!!!!!!------@');
 			});
 	}
 
@@ -133,6 +153,8 @@ class App extends React.Component {
 
 				<hr style={hrStyle} />
 				<Shipping
+					country={this.state['userCountryName']}
+					zip={this.state['userZipCode']}
 					shipprice={this.state.items[0]['shipprice']}
 					location={this.state.items[0]['location']}
 					eta={this.state.items[0]['eta']}

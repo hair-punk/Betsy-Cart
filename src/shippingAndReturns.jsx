@@ -39,7 +39,10 @@ export const Shipping = props => (
 				<div style={marginAddToFrom(1)}>From {props.location.split(', ')[1]}</div>
 				<div style={marginAddToFrom(2)}>
 					{' '}
-					{props.shipprice} to <u>United States, 84103-1506</u>
+					{props.shipprice} to{' '}
+					<u>
+						{props.country}, {props.zip}
+					</u>
 				</div>
 			</div>
 		</div>

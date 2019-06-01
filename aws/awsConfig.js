@@ -16,8 +16,8 @@ var file = fs.readFile(path.join(__dirname.slice(0, -4) + '/public/bundle.js'), 
 	var bucketPromise = new S3({
 		region: 'us-west-2',
 		credentials: {
-			accessKeyId: 'AKIAJ3FBSBEZA6NOUJLA',
-			secretAccessKey: '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',
+			accessKeyId,
+			secretAccessKey,
 		},
 	});
 
