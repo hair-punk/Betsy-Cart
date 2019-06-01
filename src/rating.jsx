@@ -1,17 +1,14 @@
 import React from 'react';
 import { Stars } from './stars.jsx';
 
-const stars = '★★★★★☆☆☆☆☆'
-
 export var Rating = function(props) {
 	const ratingBarContainer = {
 		display: 'flex',
 		flexDirection: 'row',
 		width: 'auto',
 		height: 'auto',
-
-		alignItems: 'center',
-		alignSelf: 'flex-start',
+		// alignItems: 'flex-start',
+		justifyContent: 'flex-start',
 	};
 	const numStars = {
 		textDecoration: 'none',
@@ -21,18 +18,15 @@ export var Rating = function(props) {
 	};
 	const ratingBarDiv = {
 		height: '18px',
-		alignSelf: 'flex-start',
-		// alignItems: 'center',
-		alignSelf: 'flex-start',
+		alignItems: 'center',
 		marginBottom: '14px',
 		display: 'flex',
 		flexDirection: 'row',
 		minWidth: '290px',
 		height: 'auto',
-		justifyContent: 'space-between',
+		alignSelf: 'flex-start',
+		marginLeft: '-.2.2vw',
 	};
-	// alignSelf: 'flex-start',
-	// marginLeft: '-.2.2vw',
 
 	const storeName = {
 		maxWidth: '210px',
