@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
+// mongoose.connect('mongodb://mongo:27017/myapp', { useNewUrlParser: true });
 mongoose.connect('mongodb://localhost:27017/myapp', { useNewUrlParser: true });
+var dockerSwitch = 'TOGGLE THE COMMENTING OUT of the 2 lines ABOVE^^^^^ '; // this is just to help in the readme.
 var Schema = mongoose.Schema;
 
 kartSchema = new Schema({

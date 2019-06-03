@@ -144,7 +144,7 @@ describe('- - - - - - - API Routes - - - - - -', function() {
 
 	it('be able to get all via axios get call too /items)', function(done) {
 		axios
-			.get('http://localhost:3002/items')
+			.get('http://localhost:3006/items')
 			.catch(e => {
 				expect(e).to.equal(null);
 				console.log(e);
@@ -160,7 +160,7 @@ describe('- - - - - - - API Routes - - - - - -', function() {
 
 	it('be able to get all via axios get call too find a single item by id)', function(done) {
 		axios
-			.get('http://localhost:3002/items/27')
+			.get('http://localhost:3006/items/27')
 			.catch(e => {
 				expect(e).to.equal(null);
 				console.log(e);

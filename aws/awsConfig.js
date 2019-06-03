@@ -32,7 +32,10 @@ var file = fs.readFile(path.join(__dirname.slice(0, -4) + '/public/bundle.js'), 
 			if (err) {
 				console.log(err);
 			} else {
-				console.log('uploaded bundle');
+				console.log(
+					'uploaded bundle to aws s3 bucket ',
+					'https://trevorbetsyinfo.s3-us-west-2.amazonaws.com/tbundle.js',
+				);
 				console.log(data);
 			}
 		},

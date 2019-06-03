@@ -1,7 +1,8 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const $ = require('jquery');
 const axios = require('axios');
-const { ipKey } = require('../config/aws.js');
+
 import { Deets } from './itemDeets.jsx';
 import { Options } from './optionsAndCart.jsx';
 import { Rating } from './rating.jsx'; // styled
@@ -23,6 +24,8 @@ const hrStyle = {
 	opacity: '.3',
 };
 
+var pathname = window.location.href;
+var pathname = 'http://localhost:3006/';
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -67,8 +70,21 @@ class App extends React.Component {
 	}
 	clickHandle() {
 		var random = Math.floor(Math.random() * 99).toString();
+		$.get(pathname + 'items/' + '2', (err, results) => {
+			if (err) {
+				console.log('error in ajax get requets');
+				console.log(err);
+			} else {
+				console.log(JSON.stringify(results));
+			}
+		});
+		console.log('------------------------------------');
+		console.log('pathname:');
+		console.log(pathname);
+		console.log('------------------------------------');
+
 		axios
-			.get('http://localhost:3002/items/' + random)
+			.get(pathname + 'items/' + random)
 			// fetch('/items/19', {})
 			.then(results => {
 				this.setState({
@@ -92,14 +108,14 @@ class App extends React.Component {
 
 	componentDidMount() {
 		axios
-			.get('http://localhost:3002/items/2')
+			.get(pathname + 'items/2')
 			// fetch('/items/19', {})
 			.then(results => {
 				this.setState({
 					items: results.data,
 				});
 				console.log('updated item from db');
-				// console.log(JSON.stringify(results.data));
+				console.log(JSON.stringify(results.data));
 			})
 			.catch(err => {
 				if (err) {
