@@ -37,3 +37,10 @@ var App = {
 	Deets: { Deet: {} },
 	Shipping: {},
 };
+
+###CRUD API:
+- GET /item/:id retrieves item with that specific id, (and also name? tbd)
+- POST /cartAdd/ adds the item to the cart, and posts the item options
+- PUT /CARTADD/ removes the item from the cart
+- DELETE /item/:id deletes the item
+
