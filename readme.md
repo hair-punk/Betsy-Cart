@@ -38,7 +38,7 @@ var App = {
 	Shipping: {},
 };
 
-###CRUD API:
+### CRUD API:
 - GET /item/:id retrieves item with that specific id, (and also name? tbd)
 - POST /cartAdd/ adds the item to the cart, and posts the item options
 - PUT /CARTADD/ removes the item from the cart
