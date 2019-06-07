@@ -26,7 +26,9 @@
 	},
 	"homepage": "https://github.com/fec-team-2/kart-and-info#readme",
 	"dependencies": {
+		"cassandra-driver": "^4.1.0",
 		"morgan": "^1.9.1",
+		"pg": "^7.11.0",
 		"request": "^2.88.0"
 	},
 	"devDependencies": {
