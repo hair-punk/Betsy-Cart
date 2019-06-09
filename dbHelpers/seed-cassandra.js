@@ -43,4 +43,7 @@ client.connect((err) => {
 
 async function seed() {
   await client.execute('CREATE TABLE cartitems.items (id UUID PRIMARY KEY, data MAP<text,text>)')
+  client.shutdown().then(() => {
+    console.log('cassandra connection shut down')
+  });;
 }
