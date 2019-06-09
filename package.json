@@ -12,6 +12,7 @@
 		"build": "webpack  -d",
 		"seed": "node dbHelpers/dbSeed.js",
 		"seed-postgres": "node dbHelpers/seed-postgres.js",
+		"seed-cassandra": "node dbHelpers/seed-cassandra.js",
 		"reset": "node dbHelpers/dbReset.js",
 		"drop": "node dbHelpers/dbDrop.js",
 		"deploy": "node aws/awsConfig.js"

@@ -23,7 +23,7 @@ const tablename = 'items';
 // };
 (async function seed() {
   await wipe();
-  // await populate();
+  //   await populate();
 })()
 
 async function wipe() {
@@ -78,7 +78,7 @@ async function populate() {
       console.log('Populate coudnlt connect');
     } else {
       console.log('populator connected');
-      client.query('CREATE TABLE ' + tablename + '(info json NOT NULL)', function (err) {
+      client.query('CREATE TABLE ' + tablename + '(id INT NOT NULL PRIMARY KEY, info json NOT NULL)', function (err) {
         if (err) {
           console.log(err)
         } else {
