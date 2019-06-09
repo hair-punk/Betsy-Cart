@@ -1,7 +1,8 @@
 const faker = require("faker")
 
-function createItem() {//creates and returns a single item
+function createItem(id) {//creates and returns a single item
   var item = {
+    id: id,
     title: '',
     company: '',
     colors: [],
@@ -15,7 +16,6 @@ function createItem() {//creates and returns a single item
     deliveryMin: '',
     deliveryMax: '',
     url: '',
-
   };
   var jeweleryTypes = ['Earrings', 'Brooch', 'Tiara', 'Tie-Clip', 'Cufflink', 'Circlet', "Hairpin", "Buckle", "Ring", "Necklace", "Bracelet", "Lipring", "Anklet", 'Nose Ring', 'Nose Stud'];
   item.title = faker.commerce.productAdjective() + ' ' + jeweleryTypes[Math.floor(Math.random() * jeweleryTypes.length)] + '|';
@@ -61,7 +61,7 @@ console.log(createItem())
 console.time('create');
 for (var x = 0; x < 1000000; x++) {
 
-  createItem()
+  createItem(x)
 
 }
 console.timeEnd('create')

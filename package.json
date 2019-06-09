@@ -1,5 +1,5 @@
 {
-	"name": "kart-and-info",
+	"name": "sdf-abhi-cart",
 	"version": "1.0.0",
 	"description": "This is a test to see if I can merge",
 	"engines": {
@@ -11,6 +11,7 @@
 		"start": "node server.js",
 		"build": "webpack  -d",
 		"seed": "node dbHelpers/dbSeed.js",
+		"seed-postgres": "node dbHelpers/seed-postgres.js",
 		"reset": "node dbHelpers/dbReset.js",
 		"drop": "node dbHelpers/dbDrop.js",
 		"deploy": "node aws/awsConfig.js"
