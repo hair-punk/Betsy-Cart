@@ -16,6 +16,7 @@ function createItem(id) {//creates and returns a single item
     deliveryMin: '',
     deliveryMax: '',
     url: '',
+    peopleWantThis: ''
   };
   var jeweleryTypes = ['Earrings', 'Brooch', 'Tiara', 'Tie-Clip', 'Cufflink', 'Circlet', "Hairpin", "Buckle", "Ring", "Necklace", "Bracelet", "Lipring", "Anklet", 'Nose Ring', 'Nose Stud'];
   item.title = faker.commerce.productAdjective() + ' ' + jeweleryTypes[Math.floor(Math.random() * jeweleryTypes.length)] + '|';
@@ -57,11 +58,12 @@ function createItem(id) {//creates and returns a single item
   item.peopleWantThis = (Math.ceil(Math.random() * 7) > 3 ? Math.ceil(Math.random() * 4) : null)
   return item;
 }
-console.log(createItem())
-console.time('create');
-for (var x = 0; x < 1000000; x++) {
+// console.log(createItem())
+// console.time('create');
+// for (var x = 0; x < 1000000; x++) {
 
-  createItem(x)
+//   createItem(x)
 
-}
-console.timeEnd('create')
+// }
+// console.timeEnd('create')
+module.exports = createItem
