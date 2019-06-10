@@ -5,7 +5,6 @@ const databasename = 'cartitems';
 const tablename = 'items';
 (async function seed() {
   await wipe();
-  //   await populate();
 })()
 
 async function wipe() {
@@ -36,18 +35,8 @@ async function wipe() {
         }
       })
     }
-
-
   })
-
 }
-
-// async function insertEntry(num) {
-//   return new Promise(async function (resolve) {
-//     console.log('ta daa')
-//   })
-// }
-
 async function createTable() {
   const Populator = new Pool({
     user: "postgres",
@@ -79,18 +68,16 @@ async function populate(client) {
   console.log('inserting item entries');
   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)')
   var batchsize = 1000;
-  for (var i = 0; i < 10000000 / batchsize; i++) {
+  for (var i = 0; i < 100000 / batchsize; i++) {
     var batch = [];
     var values = '';
     for (var j = 0; j < batchsize; j++) {
       var temp = dataGen(i * batchsize + j)
       batch.push(temp.id, temp);
-
     }
     values += '($1,$2)'
     for (var j = 3; j < batchsize * 2; j += 2) {
       values += ',($' + j + ',$' + (j + 1) + ')';
-
     }
     await client.query('INSERT INTO ' + tablename + '(id,title) VALUES' + values + ';', batch)
   }

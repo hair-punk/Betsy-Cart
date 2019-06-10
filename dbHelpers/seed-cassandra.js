@@ -12,7 +12,6 @@ client.connect((err) => {
 });
 
 (async function start() {
-
   await client.execute("DROP KEYSPACE IF EXISTS cartitems").then(async () => {
     console.log('dropped cartitems');
     await client.execute("CREATE KEYSPACE IF NOT EXISTS cartitems WITH replication = {'class':'SimpleStrategy', 'replication_factor':2}").then(() => {
@@ -20,38 +19,28 @@ client.connect((err) => {
       client.execute("USE cartitems", function () {
         console.log('switched to keyspace cartitems');
       });
-    }).then(() => {
-      seed()
-    });
+    }).then(async () => {
+      await seed()
+      await client.shutdown().then(() => {
+        console.log('cassandra connection shut down')
+      });
+    })
   })
 })()
-// id: id,
-// title: '',
-// company: '',
-// colors: [],
-// price: '',
-// shippingPrice: '',
-// description: '',
-// stars: '',
-// numStars: '',
-// quantity: '',
-// location: '',
-// deliveryMin: '',
-// deliveryMax: '',
-// url: '',
 async function seed() {
   await client.execute('CREATE TABLE cartitems.items (id INT PRIMARY KEY, title TEXT, company TEXT, colors set<text>, price DECIMAL, shippingPrice DECIMAL, description SET<TEXT>, stars double, numStars INT, quantity INT, location TEXT, deliveryMin INT, deliveryMax INT, url TEXT, peopleWantThis INT)');
   console.time('clock')
-  var batchsize = 100
-  for (var i = 0; i < 1000000 / batchsize; i++) {
+  var batchsize = 14
+  for (var i = 0; i < 10000000 / batchsize; i++) {
+    var batch = [];
     for (var j = 0; j < batchsize; j++) {
       var temp = dataGen(i * batchsize + j);
-      await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(temp)]);
+      batch.push({ query: 'INSERT INTO cartitems.items JSON ?', params: [JSON.stringify(temp)] })
+      // await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(temp)]);
+
     }
-    console.log(i);
+    await client.batch(batch);
+    //  console.log(i);
   }
   console.timeEnd('clock')
-  client.shutdown().then(() => {
-    console.log('cassandra connection shut down')
-  });
 }
