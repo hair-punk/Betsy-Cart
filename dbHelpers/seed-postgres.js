@@ -1,26 +1,8 @@
 const { Pool, Client } = require('pg');
 const dataGen = require('./dataGen.js')
 
-// const connectionString = 'postgres://postgres:password@localhost:5432/cartitems';
-// const pool = new Pool(connectionString);
 const databasename = 'cartitems';
 const tablename = 'items';
-// var item = {
-//id, '',
-//   title: '',
-//   company: '',
-//   colors: [],
-//   price: '',
-//   shippingPrice: '',
-//   description: '',
-//   stars: '',
-//   numStars: '',
-//   quantity: '',
-//   location: '',
-//   deliveryMin: '',
-//   deliveryMax: '',
-//   url: '',
-// };
 (async function seed() {
   await wipe();
   //   await populate();
@@ -84,31 +66,6 @@ async function createTable() {
         } else {
           await populate(client);
           console.log('created table');
-          // for (var x = 0; x < 10; x++) {
-          //   // await populate(x);
-
-          //   console.log(x);
-          //   var obj = dataGen(x);
-          //   await client.query('INSERT INTO ' + tablename + '(id, info) VALUES(' + 1 + ', ' + 2 + ');', async function (err, res) {
-          //     if (err) {
-          //       console.log(err)
-          //     } else {
-          //       console.log('added object ' + x + res.rows[0])
-          //     }
-          //   })
-          // }
-
-          // client.query("SELECT * from " + tablename + ';', async function (err, res) {
-
-          //   if (err) {
-          //     console.log(err);
-          //   } else {
-          //     console.log(res.rows[0])
-          //   }
-          // });
-
-
-
           Populator.end()
           process.exit(0)
 
@@ -119,49 +76,23 @@ async function createTable() {
 }
 async function populate(client) {
   console.time('loadtimer');
-  console.log('populate called')
-  for (let i = 0; i < 100000; i += 6) {
-    var obj = dataGen(i)
-    var obj2 = dataGen(i + 1);
-    var obj3 = dataGen(i + 2);
-    var obj4 = dataGen(i + 3);
-    var obj5 = dataGen(i + 4);
-    var obj6 = dataGen(i + 5);
-    await client.query('INSERT INTO ' + tablename + '(id,title) VALUES($1,$2),($3,$4),($5,$6),($7,$8),($9,$10),($11,$12);', [obj.id, obj, obj2.id, obj2, obj3.id, obj3, obj4.id, obj4, obj5.id, obj5, obj6.id, obj6]).catch((err) => {
-      console.log(err);
-    })
-  }
+  console.log('inserting item entries');
+  await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)')
+  var batchsize = 1000;
+  for (var i = 0; i < 10000000 / batchsize; i++) {
+    var batch = [];
+    var values = '';
+    for (var j = 0; j < batchsize; j++) {
+      var temp = dataGen(i * batchsize + j)
+      batch.push(temp.id, temp);
 
+    }
+    values += '($1,$2)'
+    for (var j = 3; j < batchsize * 2; j += 2) {
+      values += ',($' + j + ',$' + (j + 1) + ')';
+
+    }
+    await client.query('INSERT INTO ' + tablename + '(id,title) VALUES' + values + ';', batch)
+  }
   console.timeEnd('loadtimer')
 }
-
-
-
-
-  // console.log('executes');
-  // await client.query('INSERT INTO ' + tablename + '(id, info) VALUES(' + 2 + ', ' + 3 + ');', async function (err, res) {
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log('added object ' + x + res.rows[0])
-  //   }
-  // })
-  // await Populator.connect(async (err, client, done) => {
-  //   if (err) {
-  //     console.log('err happened', err)
-  //   } else {
-  //     console.log('populating')
-  //     for (var x = 0; x < 10; x++) {
-  //       console.log(x);
-  //     }
-  //   }
-
-  // })
-  // var obj = dataGen(id);
-  // client.query('INSERT INTO ' + tablename + '(id, info) VALUES (' + id + ', ' + JSON.stringify(obj) + ')', async function (err) {
-  //   if (err) {
-  //     console.log(err)
-  //   } else {
-  //     console.log('added object ' + id)
-  //   }
-  // })

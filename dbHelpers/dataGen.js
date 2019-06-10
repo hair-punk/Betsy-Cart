@@ -16,6 +16,7 @@ function createItem(id) {//creates and returns a single item
     deliveryMin: '',
     deliveryMax: '',
     url: '',
+    peopleWantThis: ''
   };
   var jeweleryTypes = ['Earrings', 'Brooch', 'Tiara', 'Tie-Clip', 'Cufflink', 'Circlet', "Hairpin", "Buckle", "Ring", "Necklace", "Bracelet", "Lipring", "Anklet", 'Nose Ring', 'Nose Stud'];
   item.title = faker.commerce.productAdjective() + ' ' + jeweleryTypes[Math.floor(Math.random() * jeweleryTypes.length)] + '|';
