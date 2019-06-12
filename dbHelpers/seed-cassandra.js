@@ -1,4 +1,5 @@
 const cassandra = require("cassandra-driver");
+const async = require('async');
 //const port = 7000
 var authProvider = cassandra.auth.PlainTextAuthProvider('cassandra-user', 'password');
 const dataGen = require('./dataGen.js')
@@ -21,30 +22,38 @@ client.connect((err) => {
 
       });
     }).then(async () => {
-      await seed()
+      await client.execute('CREATE TABLE cartitems.items (id INT PRIMARY KEY, title TEXT, company TEXT, colors set<text>, price DECIMAL, shippingPrice DECIMAL, description SET<TEXT>, stars double, numStars INT, quantity INT, location TEXT, deliveryMin INT, deliveryMax INT, url TEXT, peopleWantThis INT)');
+      console.time('clock')
+      var date = new Date();
+      console.log(date.toLocaleTimeString('en-US'))
+      await async.timesLimit(10000000, 50, seed)
+      console.timeEnd('clock')
       await client.shutdown().then(() => {
         console.log('cassandra connection shut down')
       });
     })
   })
 })()
-async function seed() {
-  await client.execute('CREATE TABLE cartitems.items (id INT PRIMARY KEY, title TEXT, company TEXT, colors set<text>, price DECIMAL, shippingPrice DECIMAL, description SET<TEXT>, stars double, numStars INT, quantity INT, location TEXT, deliveryMin INT, deliveryMax INT, url TEXT, peopleWantThis INT)');
-  console.time('clock')
-  var date = new Date();
-  console.log(date.toLocaleTimeString('en-US'))
-  var batchsize = 2
-  for (var i = 0; i < 10000000 / batchsize; i++) {
-    //  var batch = [];
-    for (var j = 0; j < batchsize; j++) {
-      var temp = dataGen(i * batchsize + j);
-      // batch.push({ query: 'INSERT INTO cartitems.items JSON ?', params: [JSON.stringify(temp)] })
-      await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(temp)]);
-      console.log(j)
-    }
-    // console.log(i)
-    //  await client.batch(batch);
-    //  console.log(i);
-  }
-  console.timeEnd('clock')
+// async function seed() {
+//   await client.execute('CREATE TABLE cartitems.items (id INT PRIMARY KEY, title TEXT, company TEXT, colors set<text>, price DECIMAL, shippingPrice DECIMAL, description SET<TEXT>, stars double, numStars INT, quantity INT, location TEXT, deliveryMin INT, deliveryMax INT, url TEXT, peopleWantThis INT)');
+//   console.time('clock')
+//   var date = new Date();
+//   console.log(date.toLocaleTimeString('en-US'))
+//   var batchsize = 2
+//   for (var i = 0; i < 10000000 / batchsize; i++) {
+//     //  var batch = [];
+//     for (var j = 0; j < batchsize; j++) {
+//       var temp = dataGen(i * batchsize + j);
+//       // batch.push({ query: 'INSERT INTO cartitems.items JSON ?', params: [JSON.stringify(temp)] })
+//       await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(temp)]);
+//       console.log(j)
+//     }
+//     // console.log(i)
+//     //  await client.batch(batch);
+//     //  console.log(i);
+//   }
+//   console.timeEnd('clock')
+// }
+async function seed(id) {
+  await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(dataGen(id))])
 }
