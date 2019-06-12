@@ -1,5 +1,6 @@
 const { Pool, Client } = require('pg');
 const dataGen = require('./dataGen.js')
+const async = require('async');
 
 const databasename = 'cartitems';
 const tablename = 'items';
@@ -49,7 +50,7 @@ async function createTable() {
       console.log('Populate coudnlt connect');
     } else {
       console.log('populator connected');
-      await client.query('CREATE TABLE ' + tablename + '(id INT NOT NULL PRIMARY KEY, title JSON);', async function (err) {
+      await client.query('CREATE TABLE ' + tablename + '(id INT NOT NULL PRIMARY KEY, data JSON);', async function (err) {
         if (err) {
           console.log(err)
         } else {
@@ -63,24 +64,75 @@ async function createTable() {
     }
   })
 }
+// async function populate(client) {
+//   console.time('loadtimer');
+//   console.log('inserting item entries');
+//   console.log(Date.now())
+//   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)')
+//   var batchsize = 1000;
+//   for (var i = 0; i < 10000000 / batchsize; i++) {
+//     var batch = [];
+//     var values = '';
+//     for (var j = 0; j < batchsize; j++) {
+//       var temp = dataGen(i * batchsize + j)
+//       batch.push(temp.id, temp);
+//     }
+//     values += '($1,$2)'
+//     for (var j = 3; j < batchsize * 2; j += 2) {
+//       values += ',($' + j + ',$' + (j + 1) + ')';
+//     }
+//     await client.query('INSERT INTO ' + tablename + '(id,data) VALUES' + values + ';', batch)
+//   }
+//   console.timeEnd('loadtimer')
+// }
+
 async function populate(client) {
   console.time('loadtimer');
   console.log('inserting item entries');
-  console.log(Date.now())
-  await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)')
+  console.time('clock')
+  var date = new Date();
   var batchsize = 1000;
-  for (var i = 0; i < 10000000 / batchsize; i++) {
-    var batch = [];
-    var values = '';
-    for (var j = 0; j < batchsize; j++) {
-      var temp = dataGen(i * batchsize + j)
-      batch.push(temp.id, temp);
-    }
-    values += '($1,$2)'
-    for (var j = 3; j < batchsize * 2; j += 2) {
-      values += ',($' + j + ',$' + (j + 1) + ')';
-    }
-    await client.query('INSERT INTO ' + tablename + '(id,title) VALUES' + values + ';', batch)
+  var values = '($1,$2)';
+  for (let x = 3; x < batchsize * 2; x += 2) {
+    values += ',($' + x + ',$' + (x + 1) + ')';
   }
-  console.timeEnd('loadtimer')
+  console.log(date.toLocaleTimeString('en-US'))
+  await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)');
+  await async.timesLimit(10000, 80, seed)
+  console.timeEnd('clock')
+  async function seed(id) {
+    var batch = [];
+    // var values = '($1,$2)';
+    for (let x = 0; x < batchsize; x++) {
+      batch.push(id * batchsize + x);
+      batch.push(dataGen(id * batchsize + x));
+    }
+    // for (let x = 3; x < batchsize * 2; x += 2) {
+    //   values += ',($' + x + ',$' + (x + 1) + ')';
+    // }
+    await client.query('INSERT INTO ' + tablename + '(id,data) VALUES' + values + ';', batch)
+    // for (let i = 0; i < batchsize * 2; i += 2) {
+    //   console.log(id + i);
+    //   var temp = dataGen(id + i);
+    //   batch.push(id + i);
+    //   batch.push(temp);
+    // }
+    // for (let j = 3; j < batchsize * 2; j += 2) {
+    //   values += ',($' + j + ',$' + (j + 1) + ')';
+    // }
+    // // console.log(id)
+    // // var batchsize = 1000;
+    // // var batch = [];
+    // // var values = '';
+    // // for (var j = 0; j < batchsize; j++) {
+    // //   var temp = dataGen(id + j);
+    // //   batch.push(temp.id, temp);
+    // // }
+    // // values += '($1,$2)'
+    // // for (var j = 3; j <= batchsize * 2; j += 2) {
+    // //   values += ',($' + j + ',$' + (j + 1) + ')';
+    // // }
+
+  }
 }
+
