@@ -66,9 +66,10 @@ async function createTable() {
 async function populate(client) {
   console.time('loadtimer');
   console.log('inserting item entries');
+  console.log(Date.now())
   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)')
   var batchsize = 1000;
-  for (var i = 0; i < 100000 / batchsize; i++) {
+  for (var i = 0; i < 10000000 / batchsize; i++) {
     var batch = [];
     var values = '';
     for (var j = 0; j < batchsize; j++) {
