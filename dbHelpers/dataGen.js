@@ -59,6 +59,8 @@ function createItem(id) {//creates and returns a single item
   return item;
 }
 // console.log(createItem())
+// var date = new Date();
+// console.log(date.toLocaleTimeString('en-US'))
 // console.time('create');
 // for (var x = 0; x < 1000000; x++) {
 
@@ -67,3 +69,4 @@ function createItem(id) {//creates and returns a single item
 // }
 // console.timeEnd('create')
 module.exports = createItem
+
