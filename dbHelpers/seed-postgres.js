@@ -54,8 +54,9 @@ async function createTable() {
         if (err) {
           console.log(err)
         } else {
-          await populate(client);
           console.log('created table');
+          await populate(client);
+
           Populator.end()
           process.exit(0)
 
@@ -100,7 +101,8 @@ async function populate(client) {
   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)');
   await client.query('ALTER SYSTEM SET shared_buffers = "' + 4096 + 'MB";')
   await client.query('ALTER SYSTEM SET wal_buffers = "' + 1024 + 'MB";')
-  await async.timesLimit(1000, 80, seed)
+  // await client.query('ALTER SYSTEM SET max_wal_size')
+  await async.timesLimit(10000, 80, seed)
   console.timeEnd('clock')
   async function seed(id) {
     console.log(id)
@@ -113,7 +115,9 @@ async function populate(client) {
     // for (let x = 3; x < batchsize * 2; x += 2) {
     //   values += ',($' + x + ',$' + (x + 1) + ')';
     // }
+    await client.query('BEGIN;');
     await client.query('INSERT INTO ' + tablename + '(id,data) VALUES' + values + ';', batch)
+    await client.query('COMMIT')
     // for (let i = 0; i < batchsize * 2; i += 2) {
     //   console.log(id + i);
     //   var temp = dataGen(id + i);
