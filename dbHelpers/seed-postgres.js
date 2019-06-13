@@ -98,9 +98,12 @@ async function populate(client) {
   }
   console.log(date.toLocaleTimeString('en-US'))
   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)');
-  await async.timesLimit(10000, 80, seed)
+  await client.query('ALTER SYSTEM SET shared_buffers = "' + 4096 + 'MB";')
+  await client.query('ALTER SYSTEM SET wal_buffers = "' + 1024 + 'MB";')
+  await async.timesLimit(1000, 80, seed)
   console.timeEnd('clock')
   async function seed(id) {
+    console.log(id)
     var batch = [];
     // var values = '($1,$2)';
     for (let x = 0; x < batchsize; x++) {

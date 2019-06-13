@@ -21,7 +21,7 @@ client.connect((err) => {
       console.time('clock')
       var date = new Date();
       console.log(date.toLocaleTimeString('en-US'))
-      await async.timesLimit(10000, 10, seed)
+      await async.timesLimit(10000000, 5, seed)
       console.timeEnd('clock')
       await client.shutdown().then(() => {
         console.log('cassandra connection shut down')
@@ -31,5 +31,7 @@ client.connect((err) => {
 })()
 async function seed(id) {
   console.log(id);
-  await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(dataGen(id))])
+  await client.execute('INSERT INTO cartitems.items JSON ?;', [JSON.stringify(dataGen(id))]).catch(() => {
+    console.log(id, ' rejected')
+  })
 }
