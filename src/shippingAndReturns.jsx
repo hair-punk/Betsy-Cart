@@ -19,36 +19,39 @@ const miniHeader2 = {
 	paddingBottom: '.85vw',
 };
 
-const marginAddToFrom = function(vh) {
+const marginAddToFrom = function (vh) {
 	return {
 		marginBottom: `${vh}vh`,
 		fontSize: '14px',
 	};
 };
 
-export const Shipping = props => (
-	<div>
-		<div style={miniHeaderStyle}> Shipping & Returns</div>
+export const Shipping = props => {
+
+	return (
 		<div>
-			<div style={miniHeader2}>
-				{' '}
-				Get it soon. Estimated delivery: {props.eta[0].replace('-', ' ')}-{props.eta[1]}.{' '}
-			</div>
-			<div style={needItSoon}>Need it sooner? Upgrade shipping in checkout!</div>
+			<div style={miniHeaderStyle}> Shipping & Returns</div>
 			<div>
-				<div style={marginAddToFrom(1)}>From {props.location.split(', ')[1]}</div>
-				<div style={marginAddToFrom(2)}>
+				<div style={miniHeader2}>
 					{' '}
-					{props.shipprice} to{' '}
-					<u>
-						{props.country}, {props.zip}
-					</u>
+					Get it soon. Ready to ship in {props.deliveryMin} to{props.deliveryMax} business days.
+				</div>
+				<div style={needItSoon}>Need it sooner? Upgrade shipping in checkout!</div>
+				<div>
+					<div style={marginAddToFrom(1)}>From {props.location.split(', ')[1]}</div>
+					<div style={marginAddToFrom(2)}>
+						{' '}
+						{props.shipprice} to{' '}
+						<u>
+							{props.country}, {props.zip}
+						</u>
+					</div>
 				</div>
 			</div>
+			<div style={miniHeader2}>No returns or exchanges</div>
 		</div>
-		<div style={miniHeader2}>No returns or exchanges</div>
-	</div>
-);
+	)
+};
 
 //add the api that i used in the weather app that grabs users ip address and geolocates the zipcode.
 //add a dynamic shipping/returns policy
