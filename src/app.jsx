@@ -44,15 +44,16 @@ class App extends React.Component {
 						'Corporis voluptatum officia dolor.',
 						'Aut itaque sit aut exercitationem sint vero. Unde ipsa laboriosam et ipsum qui. Mollitia molestias provident error iusto commodi.',
 					],
-					buyoptions: ['Select a color', 'Orange', 'Yellow'],
-					eta: ['May-30', 'May-31'],
+					colors: ['Select a color', 'Orange', 'Yellow'],
+					deliveryMin: 0,
+					deliveryMax: 0,
 					_id: '5cedee0a0c13f948dd2e4e26',
-					storeName: 'Synergistic Upgradable, LLC',
+					company: 'Synergistic Upgradable, LLC',
 					title: 'BrokenAPI-hipsterTapestry |  Handcrafted Incredible Handmade ivory',
 					url: 'http://josh.com',
 					price: '$207.57',
 					quantity: 19,
-					shipprice: '$6.19',
+					shippingPrice: '$6.19',
 					location: 'East Donavon, California',
 					stars: 3.5,
 					numStars: 66,
@@ -69,50 +70,54 @@ class App extends React.Component {
 		this.hoverHandle = this.hoverHandle.bind(this);
 	}
 	clickHandle() {
-		var random = Math.floor(Math.random() * 99).toString();
-		$.get(pathname + 'items/' + '2', (err, results) => {
-			if (err) {
-				console.log('error in ajax get requets');
-				console.log(err);
-			} else {
-				console.log(JSON.stringify(results));
-			}
-		});
-		console.log('------------------------------------');
-		console.log('pathname:');
-		console.log(pathname);
-		console.log('------------------------------------');
+		// var random = Math.floor(Math.random() * 99).toString();
+		// $.get(pathname + 'items/' + '2', (err, results) => {
+		// 	if (err) {
+		// 		console.log('error in ajax get requets');
+		// 		console.log(err);
+		// 	} else {
+		// 		console.log(JSON.stringify(results));
+		// 	}
+		// });
+		// console.log('------------------------------------');
+		// console.log('pathname:');
+		// console.log(pathname);
+		// console.log('------------------------------------');
 
-		axios
-			.get(pathname + 'items/' + random)
-			// fetch('/items/19', {})
-			.then(results => {
-				this.setState({
-					items: results.data,
-				});
-				console.log('updated items/cart from db');
-				// console.log(JSON.stringify(results.data));
-			})
-			.catch(err => {
-				if (err) {
-					console.log('------------------------------------');
-					console.log('err in app.jsx');
-					console.log(err);
-					console.log('err', err);
-					console.log('------------------------------------');
-				}
-			});
+		// axios
+		// 	.get(pathname + 'items/' + random)
+		// 	// fetch('/items/19', {})
+		// 	.then(results => {
+		// 		console.log(results)
+		// 		console.log(results.data)
+		// 		this.setState({
+		// 			items: results.data,
+		// 		});
+		// 		console.log('updated items/cart from db');
+		// 		// console.log(JSON.stringify(results.data));
+		// 	})
+		// 	.catch(err => {
+		// 		if (err) {
+		// 			console.log('------------------------------------');
+		// 			console.log('err in app.jsx');
+		// 			console.log(err);
+		// 			console.log('err', err);
+		// 			console.log('------------------------------------');
+		// 		}
+		// 	});
 	}
 
-	hoverHandle() {}
+	hoverHandle() { }
 
 	componentDidMount() {
 		axios
-			.get(pathname + 'items/2')
+			.get(pathname + 'items/' + Math.floor(Math.random() * 10000000))
 			// fetch('/items/19', {})
 			.then(results => {
+				console.log(results);
+				console.log(results.data)
 				this.setState({
-					items: results.data,
+					items: [results.data],
 				});
 				console.log('updated item from db');
 				console.log(JSON.stringify(results.data));
@@ -126,6 +131,7 @@ class App extends React.Component {
 					console.log('------------------------------------');
 				}
 			});
+		console.log(this.state)
 		fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
 			.then(results => results.json())
 			.then(jsonResults => {
@@ -148,7 +154,7 @@ class App extends React.Component {
 			<div style={appStyleTJN}>
 				<Rating
 					style={appStyleTJN}
-					storeName={this.state.items[0]['storeName']}
+					company={this.state.items[0]['company']}
 					stars={this.state.items[0]['stars']}
 					numStars={this.state.items[0].numStars}
 				/>
@@ -160,7 +166,7 @@ class App extends React.Component {
 				<Options
 					id={this.state.items[0]['tjnid']}
 					quantity={this.state.items[0]['quantity']}
-					options={this.state.items[0]['buyoptions']}
+					options={this.state.items[0]['colors']}
 					peoplewantthis={this.state.items[0]['peopleWantThis']}
 					carthover={this.hoverHandle}
 				/>
@@ -173,7 +179,8 @@ class App extends React.Component {
 					zip={this.state['userZipCode']}
 					shipprice={this.state.items[0]['shipprice']}
 					location={this.state.items[0]['location']}
-					eta={this.state.items[0]['eta']}
+					deliveryMin={this.state.items[0]['deliveryMin']}
+					deliveryMax={this.state.items[0]['deliveryMax']}
 				/>
 				<hr style={hrStyle} />
 			</div>
