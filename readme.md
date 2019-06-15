@@ -1,12 +1,9 @@
 Couple things to note:
--DB is mongoDB,
--To reseed database: ~npm run reset
-    this will drop the database and run the seeder again
-    you do not need to use any other DB terminal scripts at all
--To run webpack compliation: ~npm run build
--To push that bundle to s3 bucket & get a console.log of that bucket's url:  ~npm run deploy     
--the bundle deploy will work but only if you run the server  & db locally in present state.
--Tests will not work without server running
+
+-npm run seed-cassandra will seed cassandra database.  Make the following changes in the cassandra.yaml file. Be sure to change memtable_heap_space_in_mb and memtable_offheap_space_in_mp to 512 to minimize timeout and retries.  Change write_request_timeout_in_ms to 15000 as well. 
+
+-nmp run seed-postgres will seed the postgres database.  This is the database that I proceeded to deployment with.
+
 
 Docker: 
 	-to make this file work with docker and not local you need to do a global search (cmd+ shft+f) of:      dockerSwitch
