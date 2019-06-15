@@ -58,6 +58,7 @@ function createItem(id) {//creates and returns a single item
   item.peopleWantThis = (Math.ceil(Math.random() * 7) > 3 ? Math.ceil(Math.random() * 4) : null)
   return item;
 }
+// console.log(createItem(1))
 // console.log(createItem())
 // var date = new Date();
 // console.log(date.toLocaleTimeString('en-US'))
