@@ -13,17 +13,17 @@ const client = new cassandra.Client({
   socketOptions: { readTimeout: 0 },
   contactPoints: ['127.0.0.1'], keyspace: 'temp', localDataCenter: 'datacenter1', policies: { retry: retryPolicy }, pooling: {
     coreConnectionsPerHost: {
-      [distance.local]: 4,
-      [distance.remote]: 1
+      [distance.local]: 5,
+      [distance.remote]: 5
     }
   }
 })
 client.connect((err) => {
-  if (err) {console.log(err);}
+  if (err) { console.log(err); }
 });
 (async function start() {
   var failedcount = 0;
-  await client.execute("DROP KEYSPACE IF EXISTS cartitems").then(async () => {
+  await client.execute("DROP KEYSPACE IF EXISTS cartitems2").then(async () => {
     console.log('dropped cartitems');
     await client.execute("CREATE KEYSPACE IF NOT EXISTS cartitems2 WITH replication = {'class':'SimpleStrategy', 'replication_factor':1}").then(() => {
       console.log('created keyspace cartitems')
@@ -31,11 +31,11 @@ client.connect((err) => {
         console.log('switched to keyspace cartitems');
       });
     }).then(async () => {
-      await client.execute('CREATE TABLE cartitems.items (id INT PRIMARY KEY, title ASCII, company ASCII, colors set<ASCII>, price DECIMAL, shippingPrice DECIMAL, description SET<ASCII>, stars double, numStars INT, quantity INT, location ASCII, deliveryMin INT, deliveryMax INT, url ASCII, peopleWantThis INT)');
+      await client.execute('CREATE TABLE cartitems2.items (id INT PRIMARY KEY, title ASCII, company ASCII, colors set<ASCII>, price DECIMAL, shippingPrice DECIMAL, description SET<ASCII>, stars double, numStars INT, quantity INT, location ASCII, deliveryMin INT, deliveryMax INT, url ASCII, peopleWantThis INT)');
       console.time('clock')
       var date = new Date();
       console.log(date.toLocaleTimeString('en-US'))
-      await async.timesSeries(500, seed)
+      await async.timesSeries(25000, seed)
       // await seed();
       console.timeEnd('clock')
       await client.shutdown().then(() => {
@@ -45,13 +45,13 @@ client.connect((err) => {
     })
   })
   async function seed(ind) {
+    // console.log(ind);
     var batchsize = 200;
     var batchparams = [];
     for (var j = 0; j < batchsize; j++) {
-      console.log(j + batchsize * ind);
       batchparams.push([JSON.stringify(dataGen(j + batchsize * ind))])
     }
-    await executeConcurrent(client, 'INSERT INTO cartitems.items JSON ?;', batchparams, { isIdempotent: true, prepare: true }, 40, false).catch((err) => {
+    await executeConcurrent(client, 'INSERT INTO cartitems2.items JSON ?;', batchparams, { isIdempotent: true, prepare: true }, 40, false).catch((err) => {
       console.log(err, 'retrying query');
       failedcount++;
     })
