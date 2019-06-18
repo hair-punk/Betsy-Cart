@@ -35,7 +35,7 @@ client.connect((err) => {
       console.time('clock')
       var date = new Date();
       console.log(date.toLocaleTimeString('en-US'))
-      await async.timesSeries(25000, seed)
+      await async.timesSeries(50000, seed)
       // await seed();
       console.timeEnd('clock')
       await client.shutdown().then(() => {
