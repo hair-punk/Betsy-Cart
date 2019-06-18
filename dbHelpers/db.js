@@ -55,7 +55,7 @@ const create = (input, callback) => {
 
 const getAll = callback => {
 	//gets all db (useful for populating front end)
-	Kart.find({}, function(err, data) {
+	Kart.find({}, function (err, data) {
 		if (err) {
 			// callback(err, null)
 
@@ -68,7 +68,7 @@ const getAll = callback => {
 
 const clear = callback => {
 	// clears whole db
-	Kart.deleteMany({}, function(err, deleted) {
+	Kart.deleteMany({}, function (err, deleted) {
 		if (err) {
 			console.log('error in the clear controller');
 			console.log(err);
@@ -86,41 +86,41 @@ const getOne = (idOrName, callback) => {
 	// takes  in either the raw index of the  mongoDB document (0, 1, 2, 22, 99 etc) or the name of the product and returns that item's documentr.
 	var isName = idOrName.length < 3 ? false : true; // decides if the item is a product name or item ID. All of my product names . For this to work with a scalable database (like with a million entries that also contain names that are less than 5 or 6 letters, the programmer will have to change the above ternery to use regex looking for numbers. I think tha tis the only way when dealing with an unkown N of documents. I would do so, but I am on a plane right now with no interenet and this will work for FEC, LOL.
 
-	if (isName) {
-		var name = idOrName;
-		Kart.find({ title: name }, (err, results) => {
-			if (err) {
-				console.log('error in the getOne controller');
-				console.log('isName & not id? =>  ', isName);
-				console.log(err);
-				callback(err, null);
-				console.log(
-					' :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ',
-				);
-				throw err;
-			} else {
-				callback(null, results);
-			}
-		});
-	} else {
-		var id = 'tjn-id' + idOrName;
+	// if (isName) {
+	// 	var name = idOrName;
+	// 	Kart.find({ title: name }, (err, results) => {
+	// 		if (err) {
+	// 			console.log('error in the getOne controller');
+	// 			console.log('isName & not id? =>  ', isName);
+	// 			console.log(err);
+	// 			callback(err, null);
+	// 			// console.log(
+	// 			// 	' :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ',
+	// 			// );
+	// 			throw err;
+	// 		} else {
+	// 			callback(null, results);
+	// 		}
+	// 	});
+	// } else {
+	var id = 'tjn-id' + idOrName;
 
-		Kart.find({ tjnid: id }, (err, results) => {
-			console.log();
-			if (err) {
-				console.log('error in the getOne controller');
-				console.log('isName & not id? =>  ', isName);
-				console.log(err);
-				callback(err, null);
-				console.log(
-					' :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ',
-				);
-				throw err;
-			} else {
-				callback(null, results);
-			}
-		});
-	}
+	Kart.find({ tjnid: id }, (err, results) => {
+		console.log();
+		if (err) {
+			console.log('error in the getOne controller');
+			console.log('isName & not id? =>  ', isName);
+			console.log(err);
+			callback(err, null);
+			console.log(
+				' :::: :: _ :: | * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: :::: :: _ :: | * :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: :::: :: _ :: * :::: :: _ :: ',
+			);
+			throw err;
+		} else {
+			callback(null, results);
+		}
+	});
+	// }
 };
 
 const dropCollection = callback => {

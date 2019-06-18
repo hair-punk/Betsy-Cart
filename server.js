@@ -2,6 +2,7 @@
 const db = require('./dbHelpers/postgres-controller.js')
 const express = require('express');
 const bodyParser = require('body-parser');
+require('newrelic');
 const path = require('path');
 const app = express();
 
