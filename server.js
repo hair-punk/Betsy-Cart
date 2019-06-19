@@ -1,8 +1,9 @@
+require('newrelic');
 // const db = require('./dbHelpers/db.js');
 const db = require('./dbHelpers/postgres-controller.js')
 const express = require('express');
 const bodyParser = require('body-parser');
-require('newrelic');
+
 const path = require('path');
 const app = express();
 
@@ -25,14 +26,15 @@ app.get('/', function (req, res) {
 
 // - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -
 app.get('/items/:id', function (req, res) {
-	console.log('got request')
-	console.log(req.params.id)
+	// console.log('got request')
+	// console.log(req.params.id)
 	// this route is pretty smart. you can either pass the array value which corrisponds to the tjnid which on item reads  {tjnid: "tjn-id24"} for example. All that is passed in for the id here is 24 in that case. This route is smart because it works equally as well with the item name.
+	req.socket.setKeepAlive(false);
 	db.getOne(req.params.id, (err, data) => {
 		if (err || data.length === 0) {
 			res.status(404).send('error, item not found' + err);
 		} else {
-			console.log(data);
+			// console.log(data);
 			res.status(200).send(data);
 		}
 	});
