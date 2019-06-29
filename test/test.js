@@ -2,18 +2,16 @@ const expect = require('chai').expect;
 const seeds = require('../dbHelpers/seeder.js');
 const db = require('../dbHelpers/db.js');
 const axios = require('axios');
-// var reset = require("../dbHelpers/dbReset.js")
-// const server = require("../server.js")
 
-describe('- - - - - - - - -SEEDS - - - - - - -', function() {
+describe('- - - - - - - - -SEEDS - - - - - - -', function () {
 	// this is not touching mongo at all. Simply testing my controller seeder.js
-	it('Should have be an array with 100 fake items in it!', function(done) {
+	it('Should have be an array with 100 fake items in it!', function (done) {
 		expect(seeds).to.be.an('array');
 		expect(seeds.length).to.equal(100);
 
 		done();
 	});
-	it('A handful of seeds should have a storeName that is a string and has a length!', function(done) {
+	it('A handful of seeds should have a storeName that is a string and has a length!', function (done) {
 		expect(seeds[0].storeName).to.be.a('string');
 		expect(seeds[0].storeName.length).to.be.greaterThan(0);
 		expect(seeds[99].storeName).to.be.a('string');
@@ -26,8 +24,8 @@ describe('- - - - - - - - -SEEDS - - - - - - -', function() {
 	});
 });
 
-describe('- - - - - - - DB_METHODS - - - - - -', function() {
-	beforeEach(function(done) {
+describe('- - - - - - - DB_METHODS - - - - - -', function () {
+	beforeEach(function (done) {
 		db.clear(err => {
 			if (err) {
 				console.log('error in the clear before each');
@@ -48,7 +46,7 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 	//   done();
 	// })
 
-	it('Be able to create one product when passed an single object', function(done) {
+	it('Be able to create one product when passed an single object', function (done) {
 		db.create(seeds[0], (err, result) => {
 			expect(err).to.equal(null);
 			expect(result.storeName).to.be.a('string');
@@ -57,7 +55,7 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 			done();
 		});
 	});
-	it('Also be able to load an entire array usign the same function without additional parameters', function(done) {
+	it('Also be able to load an entire array usign the same function without additional parameters', function (done) {
 		db.create(seeds, (err, result) => {
 			expect(err).to.equal(null);
 			expect(result).to.be.an('array');
@@ -72,7 +70,7 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 		});
 	});
 
-	it('Should for sure be able to get all the products after they have been loaded in the DB', function(done) {
+	it('Should for sure be able to get all the products after they have been loaded in the DB', function (done) {
 		db.create(seeds, (err, result) => {
 			db.getAll((err, result) => {
 				expect(err).to.equal(null);
@@ -88,7 +86,7 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 			});
 		});
 	});
-	it('Be able to look up a product via mongoose by "tjnid"', function(done) {
+	it('Be able to look up a product via mongoose by "tjnid"', function (done) {
 		db.create(seeds, (err, result) => {
 			db.getOne('3', (error, data) => {
 				var item = data[0];
@@ -103,7 +101,7 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 		});
 	});
 
-	it('Be able to look up a product via mongoose by by "title" (product name)', function(done) {
+	it('Be able to look up a product via mongoose by by "title" (product name)', function (done) {
 		db.create(seeds, (err, result) => {
 			var testTitle = seeds[5].title;
 
@@ -121,8 +119,8 @@ describe('- - - - - - - DB_METHODS - - - - - -', function() {
 	});
 });
 
-describe('- - - - - - - API Routes - - - - - -', function() {
-	beforeEach(function(done) {
+describe('- - - - - - - API Routes - - - - - -', function () {
+	beforeEach(function (done) {
 		db.dropCollection(err => {
 			if (err) {
 				console.log('error in the clear before each');
@@ -142,7 +140,7 @@ describe('- - - - - - - API Routes - - - - - -', function() {
 		});
 	});
 
-	it('be able to get all via axios get call too /items)', function(done) {
+	it('be able to get all via axios get call too /items)', function (done) {
 		axios
 			.get('http://localhost:3006/items')
 			.catch(e => {
@@ -158,7 +156,7 @@ describe('- - - - - - - API Routes - - - - - -', function() {
 			});
 	});
 
-	it('be able to get all via axios get call too find a single item by id)', function(done) {
+	it('be able to get all via axios get call too find a single item by id)', function (done) {
 		axios
 			.get('http://localhost:3006/items/27')
 			.catch(e => {
@@ -173,23 +171,4 @@ describe('- - - - - - - API Routes - - - - - -', function() {
 				done();
 			});
 	});
-
-	//this last test is gonna take some work and i think is unessasary. My item titles have multiple spaces in them words and chars. Also this function is the same as the one above and I did witness it working while passing in non-spaced strings that I manually added to robomongo 3t after the fact. I woiuldnt have written this test unless HR said we had to, but I also think they made that rule  because most products have one name?
-
-	// it('be able to get all via axios get call too find a single item by name)', function(done) {
-
-	//   axios.get(`http://localhost:3002/items/27${name}`)
-	//   .catch(e => {
-	//     expect(e).to.equal(null)
-	//     console.log(e)
-	//     done()
-	//   })
-	//   .then(results => {
-	//     expect(Object.keys(results.data[0]).length).to.equal(16)
-	//     expect(results.data[0].title).to.equal(name)
-	//     expect(results.data[0].price).to.equal(seeds[44].price)
-	//     expect(results.data[0].tjnid).to.equal("tjn-id44")
-	//     done()
-	// })
-	// })
 });
