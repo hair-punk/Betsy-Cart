@@ -1,4 +1,4 @@
-const { Pool, Client } = require('pg');
+const { Pool } = require('pg');
 
 var databaseName = 'cartitems';
 var tableName = 'items';
@@ -12,7 +12,6 @@ const pool = new Pool({
 pool.connect(async (err, client, release) => {
   if (err) {
     console.log('could not connect to db');
-
   } else {
     console.log('connected, client released back to pool');
   }
@@ -26,7 +25,6 @@ function getOne(id, callback) {
       callback(null, result.rows[0].data);
     }
   });
-
 }
 
 module.exports = { getOne }

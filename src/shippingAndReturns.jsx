@@ -52,7 +52,3 @@ export const Shipping = props => {
 		</div>
 	)
 };
-
-//add the api that i used in the weather app that grabs users ip address and geolocates the zipcode.
-//add a dynamic shipping/returns policy
-//create some dynamic phrasing for  the need it sooner.

@@ -9,23 +9,13 @@ const deetsStyleTJN = {
 };
 
 const miniHeaderStyle = {
-	fontFamily:
-		'"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif',
+	fontFamily: '"Graphik Webfont",-apple-system,BlinkMacSystemFont,"Roboto","Droid Sans","Segoe UI","Helvetica",Arial,sans-serif',
 	fontSze: '16px',
 	paddinBottom: '2vh',
 	fontWeight: '550',
 	paddingBottom: '6px',
 };
-// const deetP = function(num = Math.floor(Math.random() * 35) ) {
 
-//     return {
-//     fontSize: `14px`,
-//     fontWeight: `400`,
-//     lineHeight: `1.6`,
-//     opacity: `.97`,
-//     paddingBottom: `${num}px`,
-//     }
-// }
 export const Deets = props => (
 	<div style={deetsStyleTJN}>
 		<div style={miniHeaderStyle}>Item details</div>
@@ -33,4 +23,3 @@ export const Deets = props => (
 	</div>
 );
 
-// + Learn more about this item

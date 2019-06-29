@@ -32,7 +32,6 @@ function createItem(id) {//creates and returns a single item
     color = letter + split.slice(1, split.length).join('');
     item.colors.push(color)
   }
-
   item.stars = 0.5 + Math.floor(Math.random() * 10) / 2;
   item.numStars = (Math.floor(item.stars * Math.random() * 100));
   var description = [
@@ -43,7 +42,6 @@ function createItem(id) {//creates and returns a single item
     faker.lorem.sentence(Math.floor(Math.random() * 3) * 8 + 5),
     faker.lorem.paragraph(Math.floor(Math.random() * 7) + 1),
   ];
-
   for (let i = 0; i <= 1 + Math.floor(Math.random() * 10); i++) {
     description.push(faker.lorem.sentence(Math.floor(Math.random() * 3) * 8 + i * 2));
     description.push(faker.lorem.paragraph(Math.floor(Math.random() * 3) * 2 + 1));
@@ -58,16 +56,5 @@ function createItem(id) {//creates and returns a single item
   item.peopleWantThis = (Math.ceil(Math.random() * 7) > 3 ? Math.ceil(Math.random() * 4) : null)
   return item;
 }
-// console.log(createItem(1))
-// console.log(createItem())
-// var date = new Date();
-// console.log(date.toLocaleTimeString('en-US'))
-// console.time('create');
-// for (var x = 0; x < 1000000; x++) {
-
-//   createItem(x)
-
-// }
-// console.timeEnd('create')
 module.exports = createItem
 
