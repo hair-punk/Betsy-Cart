@@ -1,7 +1,7 @@
 import React from 'react';
 import { Stars } from './stars.jsx';
 
-export var Rating = function(props) {
+export var Rating = function (props) {
 	const ratingBarContainer = {
 		display: 'flex',
 		flexDirection: 'row',
@@ -44,8 +44,7 @@ export var Rating = function(props) {
 			<div style={ratingBarDiv}>
 				<a
 					style={storeName}
-					href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848"
-				>
+					href="https://www.etsy.com/shop/SeaminglyPossible?ref=simple-shop-header-name&listing_id=512152848">
 					{props.storeName}
 				</a>
 				<div>

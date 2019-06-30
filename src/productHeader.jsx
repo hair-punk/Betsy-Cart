@@ -43,34 +43,7 @@ const messageSellerStyle = {
 	fontWeight: 'bold',
 };
 
-// .tjn-sellerButton {
-//   color: #222222;
-//   text-decoration: none;
-//   margin-bottom: 12px;
-//   font-weight: bold;
-//   font-size: 12px;
-//   height: 28px;
-//   padding: 4px 12px;
-//   background-color: #FFFFFF;
-//   border-color: rgba(0,0,0,0.15);
-//   border-radius: 3px;
-//   border-style: solid;
-//   border-width: 1px;
-//   font-family: inherit;
-//   line-height: 1.4;
-//   text-align: center;
-
-// }
-// .tjn-sellerButton:hover {
-//   background-color: rgb(236, 236, 236);
-//   border-color: rgba(0, 0, 0, 0.301);
-// }
-// .tjn-sellerButton:active, .tjn-sellerButton:focus {
-//   background-color: rgb(231, 231, 231);
-//   border-color: rgba(0, 0, 0, 0.521);
-// }
-
-export const Header = function(props) {
+export const Header = function (props) {
 	return (
 		<div style={mainStyle}>
 			<div style={titleStyle}>{props.itemtitle}</div>
@@ -81,6 +54,4 @@ export const Header = function(props) {
 		</div>
 	);
 };
-//
 
-//add in the you save $etc

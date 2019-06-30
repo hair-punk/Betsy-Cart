@@ -38,58 +38,15 @@ class App extends React.Component {
 		this.clickHandle = this.clickHandle.bind(this);
 		this.hoverHandle = this.hoverHandle.bind(this);
 	}
-	clickHandle() {
-		// var random = Math.floor(Math.random() * 99).toString();
-		// $.get(pathname + 'items/' + '2', (err, results) => {
-		// 	if (err) {
-		// 		console.log('error in ajax get requets');
-		// 		console.log(err);
-		// 	} else {
-		// 		console.log(JSON.stringify(results));
-		// 	}
-		// });
-		// console.log('------------------------------------');
-		// console.log('pathname:');
-		// console.log(pathname);
-		// console.log('------------------------------------');
-
-		// axios
-		// 	.get(pathname + 'items/' + random)
-		// 	// fetch('/items/19', {})
-		// 	.then(results => {
-		// 		console.log(results)
-		// 		console.log(results.data)
-		// 		this.setState({
-		// 			items: results.data,
-		// 		});
-		// 		console.log('updated items/cart from db');
-		// 		// console.log(JSON.stringify(results.data));
-		// 	})
-		// 	.catch(err => {
-		// 		if (err) {
-		// 			console.log('------------------------------------');
-		// 			console.log('err in app.jsx');
-		// 			console.log(err);
-		// 			console.log('err', err);
-		// 			console.log('------------------------------------');
-		// 		}
-		// 	});
-	}
-
-	hoverHandle() { }
 
 	componentDidMount() {
 		axios
 			.get(pathname + 'items/' + Math.floor(Math.random() * 10000000))
-			// fetch('/items/19', {})
 			.then(results => {
-				console.log(results);
-				console.log(results.data)
 				this.setState({
 					items: [results.data],
 				});
-				console.log('updated item from db');
-				console.log(JSON.stringify(results.data));
+
 			})
 			.catch(err => {
 				if (err) {
@@ -105,16 +62,13 @@ class App extends React.Component {
 			.then(results => results.json())
 			.then(jsonResults => {
 				console.log('- - - - - requested your IPaddress to get geolcation');
-				// console.log(jsonResults.postal);
 				this.setState({
 					userCountryName: jsonResults.country_name,
 					userZipCode: jsonResults.postal,
 				});
 			})
 			.catch(e => {
-				console.log('@-!!!!!!!!!------------------------@');
 				console.log(e);
-				console.log('@------------!!!!!!!!!!!!!!!!------@');
 			});
 	}
 

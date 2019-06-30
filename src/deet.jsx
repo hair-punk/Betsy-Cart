@@ -1,6 +1,6 @@
 import React from 'react';
 
-const deetP = function(num = Math.floor(Math.random() * 35)) {
+const deetP = function (num = Math.floor(Math.random() * 35)) {
 	return {
 		fontSize: `14px`,
 		fontWeight: `400`,
@@ -11,7 +11,6 @@ const deetP = function(num = Math.floor(Math.random() * 35)) {
 };
 export const Deet = props => {
 	var arr = props.descriptionArr;
-
 	return arr.map((info, index) => {
 		if (index === props.descriptionArr.length - 1) {
 			return <div style={deetP(0)}>{info}</div>;

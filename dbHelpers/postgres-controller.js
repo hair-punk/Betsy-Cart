@@ -1,5 +1,5 @@
-const { Pool, Client } = require('pg');
-
+const { Pool } = require('pg');
+ls
 var databaseName = 'cartitems';
 var tableName = 'items';
 const pool = new Pool({
@@ -27,7 +27,6 @@ function getOne(id, callback) {
       callback(null, result.rows[0].data);
     }
   });
-
 }
 
 module.exports = { getOne }
