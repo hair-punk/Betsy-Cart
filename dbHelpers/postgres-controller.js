@@ -3,6 +3,7 @@ const { Pool, Client } = require('pg');
 var databaseName = 'cartitems';
 var tableName = 'items';
 const pool = new Pool({
+  host: "54.183.189.191",
   user: "postgres",
   password: 'password',
   port: 5432,
@@ -12,7 +13,7 @@ const pool = new Pool({
 pool.connect(async (err, client, release) => {
   if (err) {
     console.log('could not connect to db');
-
+   console.log(err);
   } else {
     console.log('connected, client released back to pool');
   }
