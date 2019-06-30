@@ -1,4 +1,5 @@
 require('newrelic');
+
 const db = require('./dbHelpers/postgres-controller.js')
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,6 +8,9 @@ const path = require('path');
 const app = express();
 
 const port = 3006;
+
+const host = '127.0.0.1';
+//app.set('env', 'production');
 
 app.use(function (req, res, next) {
 	res.header('Access-Control-Allow-Origin', '*');

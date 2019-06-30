@@ -8,7 +8,7 @@
 	"main": "server.js",
 	"scripts": {
 		"test": "mocha test/test.js",
-		"start": "node server.js",
+		"start": "NODE_ENV=production node server.js",
 		"build": "webpack  -d",
 		"seed": "node dbHelpers/dbSeed.js",
 		"seed-postgres": "node dbHelpers/seed-postgres.js",
