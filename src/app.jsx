@@ -89,18 +89,18 @@ class App extends React.Component {
 				}
 			});
 		console.log(this.state)
-		fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
-			.then(results => results.json())
-			.then(jsonResults => {
-				console.log('- - - - - requested your IPaddress to get geolcation');
-				this.setState({
-					userCountryName: jsonResults.country_name,
-					userZipCode: jsonResults.postal,
-				});
-			})
-			.catch(e => {
-				console.log(e);
-			});
+		// fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
+		// 	.then(results => results.json())
+		// 	.then(jsonResults => {
+		// 		console.log('- - - - - requested your IPaddress to get geolcation');
+		// 		this.setState({
+		// 			userCountryName: jsonResults.country_name,
+		// 			userZipCode: jsonResults.postal,
+		// 		});
+		// 	})
+		// 	.catch(e => {
+		// 		console.log(e);
+		// 	});
 	}
 
 	render() {
