@@ -6,7 +6,10 @@ const bodyParser = require('body-parser');
 
 const path = require('path');
 const app = express();
-
+import React from 'react';
+import ReactDOMServer from 'react-dom/server'
+import compression from "compression";
+import App from './src/app.jsx'
 const port = 3006;
 
 const host = '127.0.0.1';
@@ -22,19 +25,19 @@ app.use(express.urlencoded());
 app.use(express.static('public'));
 
 // - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -
-app.get('/', function (req, res) {
-	res.sendFile(path.join(__dirname + '/public/index.html'));
-}); // - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -
+// app.get('/', function (req, res) {
+// 	res.sendFile(path.join(__dirname + '/public/index.html'));
+// }); // - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -
 
 // - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -  - - - - - -
-app.get('/items/:id', function (req, res) {
+app.get('/:id', function (req, res) {
 	req.socket.setKeepAlive(false);
 	db.getOne(req.params.id, (err, data) => {
 		if (err || data.length === 0) {
 			res.status(404).send('error, item not found' + err);
 		} else {
-			// console.log(data);
-			res.status(200).send(data);
+			// console.log(data)
+			res.send(ReactDOMServer.renderToString(<App data={data} />));
 		}
 	});
 });
