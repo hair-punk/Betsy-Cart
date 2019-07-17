@@ -24,39 +24,25 @@ const hrStyle = {
 	opacity: '.3',
 };
 
-//var pathname = window.location.href;
-var pathname = 'http://localhost:3006/';
+
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			// items: props.data,
 			userCountryName: 'WonkaVille',
 			userZipCode: '55555',
 		};
 
-		// this.clickHandle = this.clickHandle.bind(this);
+		this.clickHandle = this.clickHandle.bind(this);
 		// this.hoverHandle = this.hoverHandle.bind(this);
+	}
+	clickHandle(e) {
+		e.preventDefault();
+		console.log('the item price was clicked');
 	}
 
 	componentDidMount() {
-		// axios
-		// 	.get(pathname + 'items/' + Math.floor(Math.random() * 10000000))
-		// 	.then(results => {
-		// 		this.setState({
-		// 			items: [results.data],
-		// 		});
 
-		// 	})
-		// 	.catch(err => {
-		// 		if (err) {
-		// 			console.log('------------------------------------');
-		// 			console.log('err in app.jsx');
-		// 			console.log(err);
-		// 			console.log('err', err);
-		// 			console.log('------------------------------------');
-		// 		}
-		// 	});
 		console.log(this.state)
 		// fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
 		// 	.then(results => results.json())
@@ -115,5 +101,6 @@ class App extends React.Component {
 		}
 	}
 }
+// ReactDOM.hydrate(<App className="tjn-app" />, document.getElementById('tjn-root'));
 export default App;
-//ReactDOM.render(<App className="tjn-app" />, document.getElementById('tjn-root'));
+
