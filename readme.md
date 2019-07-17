@@ -1,6 +1,6 @@
 # Betsy Cart Module
 
-My team was tasked with creating the backend infrastructure for a high traffic sales website, and I was tasked with designing and implementing the shopping cart module. 
+My team was tasked with creating the backend infrastructure for a high traffic sales website, and I was tasked with designing and implementing the shopping cart module. Server side rendering has been implemented.
 
 ## Usage
 
@@ -33,5 +33,5 @@ It should be accessable from localhost:3006.
 ## Other Links
 
 [This](https://github.com/hair-punk/Cart-Test-Proxy) is a link to the proxy I used for stress tests.  It's really nothing special.
-
+UPDATE: Proxy has been refactored for server side rendering.
 
