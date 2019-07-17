@@ -45,10 +45,10 @@ const messageSellerStyle = {
 
 export const Header = function (props) {
 	return (
-		<div style={mainStyle}>
+		<div style={mainStyle} onClick={props.randomItemClick}>
 			<div style={titleStyle}>{props.itemtitle}</div>
 			<div style={itemPriceStyle}>
-				<div onClick={props.randomItemClick}>{props.itemprice}+ </div>{' '}
+				<div >{props.itemprice}+ </div>{' '}
 				<button style={messageSellerStyle}>Message Seller</button>
 			</div>
 		</div>
