@@ -3,6 +3,7 @@ const { Pool } = require('pg');
 var databaseName = 'cartitems';
 var tableName = 'items';
 const pool = new Pool({
+  host: '172.31.11.83',
   user: "postgres",
   password: 'password',
   port: 5432,
