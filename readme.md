@@ -18,7 +18,7 @@ To seed cassandra, run
 
 ```npm run seed-cassandra```
 
-Refer to my [Engineering Journal](https://docs.google.com/document/d/1-UxgsPrzfTyxeGCgR6D4nyP9PRomVU9cQ5k6bpTHEGA/edit?usp=sharing) for information regarding optimization and my performance test results/
+Refer to my [Engineering Journal](https://drive.google.com/file/d/1ZMHVF6Ok9v8AHS46ZobG-DRFE_n4OGQB/view?usp=sharing) for information regarding optimization and my performance test results/
 
 To build the frontent, run
 
