@@ -44,7 +44,6 @@ client.connect((err) => {
     })
   })
   async function seed(ind) {
-    // console.log(ind);
     var batchsize = 200;
     var batchparams = [];
     for (var j = 0; j < batchsize; j++) {
