@@ -4,7 +4,6 @@ const db = require('../dbHelpers/db.js');
 const axios = require('axios');
 
 describe('- - - - - - - - -SEEDS - - - - - - -', function () {
-	// this is not touching mongo at all. Simply testing my controller seeder.js
 	it('Should have be an array with 100 fake items in it!', function (done) {
 		expect(seeds).to.be.an('array');
 		expect(seeds.length).to.equal(100);
@@ -20,7 +19,6 @@ describe('- - - - - - - - -SEEDS - - - - - - -', function () {
 		expect(seeds[40].storeName.length).to.be.greaterThan(0);
 
 		done();
-		//  db.dropCollection();
 	});
 });
 
@@ -35,16 +33,9 @@ describe('- - - - - - - DB_METHODS - - - - - -', function () {
 				console.log('ok');
 			}
 		});
-		// .catch(err => {
-		//   console.log(err)
-		// })
+
 		done();
 	});
-
-	// afterEach(function(done) {
-	//   db.dropCollection()
-	//   done();
-	// })
 
 	it('Be able to create one product when passed an single object', function (done) {
 		db.create(seeds[0], (err, result) => {
