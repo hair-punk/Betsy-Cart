@@ -34,28 +34,12 @@ class App extends React.Component {
 		};
 
 		this.clickHandle = this.clickHandle.bind(this);
-		// this.hoverHandle = this.hoverHandle.bind(this);
 	}
 	clickHandle(e) {
 		e.preventDefault();
-		console.log('the item price was clicked');
 	}
 
 	componentDidMount() {
-
-		console.log(this.state)
-		// fetch(`https://api.ipdata.co/?api-key=${'b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f'}`)
-		// 	.then(results => results.json())
-		// 	.then(jsonResults => {
-		// 		console.log('- - - - - requested your IPaddress to get geolcation');
-		// 		this.setState({
-		// 			userCountryName: jsonResults.country_name,
-		// 			userZipCode: jsonResults.postal,
-		// 		});
-		// 	})
-		// 	.catch(e => {
-		// 		console.log(e);
-		// 	});
 	}
 
 	render() {
@@ -101,6 +85,5 @@ class App extends React.Component {
 		}
 	}
 }
-// ReactDOM.hydrate(<App className="tjn-app" />, document.getElementById('tjn-root'));
 export default App;
 
