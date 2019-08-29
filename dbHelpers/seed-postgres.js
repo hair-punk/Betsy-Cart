@@ -56,34 +56,25 @@ async function createTable() {
         } else {
           console.log('created table');
           await populate(client);
-
           Populator.end()
           process.exit(0)
-
         }
       })
     }
   })
 }
-
 async function populate(client) {
-  console.time('loadtimer');
-  console.log('inserting item entries');
-  console.time('clock')
   var date = new Date();
   var batchsize = 1000;
   var values = '($1,$2)';
   for (let x = 3; x < batchsize * 2; x += 2) {
     values += ',($' + x + ',$' + (x + 1) + ')';
   }
-  console.log(date.toLocaleTimeString('en-US'))
   await client.query('ALTER TABLE ' + tablename + ' SET (autovacuum_enabled = false, toast.autovacuum_enabled = false)');
   await client.query('ALTER SYSTEM SET shared_buffers = "' + 4096 + 'MB";')
   await client.query('ALTER SYSTEM SET wal_buffers = "' + 1024 + 'MB";')
   await async.timesLimit(10000, 80, seed)
-  console.timeEnd('clock')
   async function seed(id) {
-    console.log(id)
     var batch = [];
     for (let x = 0; x < batchsize; x++) {
       batch.push(id * batchsize + x);
