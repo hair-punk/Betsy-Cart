@@ -7,14 +7,14 @@ export var Rating = function (props) {
 		flexDirection: 'row',
 		width: 'auto',
 		height: 'auto',
-		// alignItems: 'flex-start',
+
 		justifyContent: 'flex-start',
 	};
 	const numStars = {
 		textDecoration: 'none',
 		color: '#757575',
 		fontSize: '14px',
-		// paddingLeft: '1.2vw',
+
 	};
 	const ratingBarDiv = {
 		height: '18px',
