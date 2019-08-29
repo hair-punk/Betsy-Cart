@@ -39,7 +39,6 @@ client.connect((err) => {
       // await seed();
       console.timeEnd('clock')
       await client.shutdown().then(() => {
-        // console.log(failedcount, ' failed')
         console.log('cassandra connection shut down')
       });
     })
