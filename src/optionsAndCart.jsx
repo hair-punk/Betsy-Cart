@@ -86,7 +86,6 @@ export class Options extends React.Component {
 		this.activeHoverExit = this.activeHoverExit.bind(this);
 	}
 	activeHoverChange(event) {
-		// console.log('YEAHHH');
 		var style = event.target.name;
 		if (style === 'buyItStyle') {
 			this.setState(
@@ -269,5 +268,3 @@ export class Options extends React.Component {
 		);
 	}
 }
-
-// add state to options button
